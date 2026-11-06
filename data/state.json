@@ -2,13 +2,13 @@
   "schema": 1,
   "started_at": "2026-11-06T15:29:05.429626Z",
   "trial_end": "2026-12-06T15:29:05.429626Z",
-  "updated_at": "2026-11-06T15:43:57.675016Z",
+  "updated_at": "2026-11-06T15:45:56.938462Z",
   "buckets": {
     "day_maker": {
       "horizon": "day",
       "mode": "maker",
       "initial": 15000,
-      "cash": 14980.91
+      "cash": 14980.59
     },
     "day_taker": {
       "horizon": "day",
@@ -26,7 +26,7 @@
       "horizon": "month",
       "mode": "taker",
       "initial": 15000,
-      "cash": 14995.3381
+      "cash": 14992.9641
     },
     "long_maker": {
       "horizon": "long",
@@ -73,7 +73,7 @@
           "close_time": "2026-11-06T22:00:00Z",
           "decision_time": "2026-11-06T22:05:00Z",
           "rules": "If the simple average of the sixty seconds of CF Benchmarks' Bitcoin Real-Time Index (BRTI) before 5 PM EST is above 74999.99 at 5 PM EST on Nov 6, 2026, then the market resolves to Yes.",
-          "mark": 14.5453,
+          "mark": 15.1159,
           "unpriced": false
         },
         {
@@ -89,7 +89,7 @@
           "close_time": "2026-11-06T22:00:00Z",
           "decision_time": "2026-11-06T22:05:00Z",
           "rules": "If the simple average of the sixty seconds of CF Benchmarks' Bitcoin Real-Time Index (BRTI) before 5 PM EST is above 76999.99 at 5 PM EST on Nov 6, 2026, then the market resolves to Yes.",
-          "mark": 3.8611,
+          "mark": 4.5101,
           "unpriced": false
         }
       ],
@@ -117,8 +117,8 @@
           "reason": "Entry at observed ask; capped at 5% displayed top-level size"
         }
       ],
-      "pnl": -9.493,
-      "mark": 18.4064,
+      "pnl": -8.2734,
+      "mark": 19.626,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
@@ -138,11 +138,11 @@
       "opened_at": "2026-11-06T15:29:05.429626Z",
       "status": "entering",
       "quantity": 59,
-      "cost": 17.69,
+      "cost": 18.01,
       "proceeds": 0,
       "fees": 0.0,
       "cost_cap": 2000,
-      "reserved": 7.68,
+      "reserved": 7.36,
       "legs": [
         {
           "ticker": "KXBTCD-26NOV0617-T74999.99",
@@ -150,7 +150,7 @@
           "subtitle": "$75,000 or above",
           "side": "no",
           "limit": 0.32,
-          "bought": 35,
+          "bought": 36,
           "sold": 0,
           "fee_multiplier": 1.0,
           "maker_enabled": false,
@@ -161,10 +161,10 @@
             "action": "buy",
             "side": "no",
             "limit": 0.32,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           },
-          "mark": 8.6286,
+          "mark": 9.2233,
           "unpriced": false
         },
         {
@@ -184,10 +184,10 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.11,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           },
-          "mark": 3.8611,
+          "mark": 4.5101,
           "unpriced": false
         }
       ],
@@ -213,10 +213,21 @@
           "fee": 0.0,
           "mode": "maker",
           "reason": "Estimated maker fill: strict trade-through, 5% volume"
+        },
+        {
+          "at": "2026-11-06T15:45:56.938462Z",
+          "ticker": "KXBTCD-26NOV0617-T74999.99",
+          "side": "no",
+          "action": "buy",
+          "price": 0.32,
+          "quantity": 1,
+          "fee": 0.0,
+          "mode": "maker",
+          "reason": "Estimated maker fill: strict trade-through, 5% volume"
         }
       ],
-      "pnl": -5.2003,
-      "mark": 12.4897,
+      "pnl": -4.2766,
+      "mark": 13.7334,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
@@ -254,7 +265,7 @@
           "close_time": "2026-11-06T22:00:00Z",
           "decision_time": "2026-11-06T22:00:00Z",
           "rules": "If the close price of the 1-minute candlestick for natural gas on November 06, 2026 at 5:00 PM EST is above 2.899 USD/MMBtu, then the market resolves to Yes.",
-          "mark": 0.8961,
+          "mark": 0.8006,
           "unpriced": false
         },
         {
@@ -270,7 +281,7 @@
           "close_time": "2026-11-06T22:00:00Z",
           "decision_time": "2026-11-06T22:00:00Z",
           "rules": "If the close price of the 1-minute candlestick for natural gas on November 06, 2026 at 5:00 PM EST is above 2.999 USD/MMBtu, then the market resolves to Yes.",
-          "mark": 0.6578,
+          "mark": 0.7529,
           "unpriced": false
         }
       ],
@@ -298,8 +309,8 @@
           "reason": "Entry at observed ask; capped at 5% displayed top-level size"
         }
       ],
-      "pnl": -0.389,
-      "mark": 1.5539,
+      "pnl": -0.3894,
+      "mark": 1.5535,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
@@ -342,7 +353,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.04,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           }
         },
@@ -363,10 +374,10 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.28,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           },
-          "mark": 0.6578,
+          "mark": 0.7529,
           "unpriced": false
         }
       ],
@@ -383,8 +394,8 @@
           "reason": "Estimated maker fill: strict trade-through, 5% volume"
         }
       ],
-      "pnl": -0.7422,
-      "mark": 0.6578,
+      "pnl": -0.6471,
+      "mark": 0.7529,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
@@ -472,7 +483,8 @@
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
-      "depth_shortfall": false
+      "depth_shortfall": false,
+      "target_profit": 0.323
     },
     {
       "id": "T00006",
@@ -509,7 +521,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.06,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           }
         },
@@ -530,7 +542,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.28,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           }
         }
@@ -625,7 +637,8 @@
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
-      "depth_shortfall": false
+      "depth_shortfall": false,
+      "target_profit": 0.8425
     },
     {
       "id": "T00008",
@@ -662,7 +675,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.21,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           }
         },
@@ -683,7 +696,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.01,
-            "after": "2026-11-06T15:43:57.675016Z",
+            "after": "2026-11-06T15:45:56.938462Z",
             "participation": 0.05
           }
         }
@@ -692,6 +705,159 @@
       "pnl": 0.0,
       "mark": 0.0,
       "entry_deadline": "2026-11-07T15:43:57.675016Z",
+      "target_ratio": 0.25,
+      "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
+      "unpriced": false,
+      "depth_shortfall": false
+    },
+    {
+      "id": "T00009",
+      "bucket": "month_taker",
+      "horizon": "month",
+      "mode": "taker",
+      "strategy": "Threshold strangle",
+      "event": "KXFED-26DEC",
+      "version": "baseline-v1",
+      "created_at": "2026-11-06T15:45:56.938462Z",
+      "opened_at": "2026-11-06T15:45:56.938462Z",
+      "status": "open",
+      "quantity": 9,
+      "cost": 2.374,
+      "proceeds": 0,
+      "fees": 0.124,
+      "cost_cap": 2000,
+      "reserved": 0,
+      "legs": [
+        {
+          "ticker": "KXFED-26DEC-T4.00",
+          "title": "Will the upper bound of the federal funds rate be above 4.00% following the Fed's Dec 9, 2026 meeting?",
+          "subtitle": "Above 4.00%",
+          "side": "no",
+          "limit": 0.23,
+          "bought": 9,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": true,
+          "close_time": "2026-12-09T18:55:00Z",
+          "decision_time": "2026-12-09T19:05:00Z",
+          "rules": "If the upper bound of the target federal funds rate published on the Federal Reserve's official website is greater than 4.00% following the Federal Reserve's Dec 9, 2026 meeting, then the market resolves to Yes.",
+          "mark": 1.8718,
+          "unpriced": false
+        },
+        {
+          "ticker": "KXFED-26DEC-T4.25",
+          "title": "Will the upper bound of the federal funds rate be above 4.25% following the Fed's Dec 9, 2026 meeting?",
+          "subtitle": "Above 4.25%",
+          "side": "yes",
+          "limit": 0.02,
+          "bought": 9,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": true,
+          "close_time": "2026-12-09T18:55:00Z",
+          "decision_time": "2026-12-09T19:05:00Z",
+          "rules": "If the upper bound of the target federal funds rate published on the Federal Reserve's official website is greater than 4.25% following the Federal Reserve's Dec 9, 2026 meeting, then the market resolves to Yes.",
+          "mark": 0.0837,
+          "unpriced": false
+        }
+      ],
+      "fills": [
+        {
+          "at": "2026-11-06T15:45:56.938462Z",
+          "ticker": "KXFED-26DEC-T4.00",
+          "side": "no",
+          "action": "buy",
+          "price": 0.23,
+          "quantity": 9,
+          "fee": 0.1116,
+          "mode": "taker",
+          "reason": "Entry at observed ask; capped at 5% displayed top-level size"
+        },
+        {
+          "at": "2026-11-06T15:45:56.938462Z",
+          "ticker": "KXFED-26DEC-T4.25",
+          "side": "yes",
+          "action": "buy",
+          "price": 0.02,
+          "quantity": 9,
+          "fee": 0.0124,
+          "mode": "taker",
+          "reason": "Entry at observed ask; capped at 5% displayed top-level size"
+        }
+      ],
+      "pnl": -0.4185,
+      "mark": 1.9555,
+      "entry_deadline": "2026-11-07T15:45:56.938462Z",
+      "target_ratio": 0.25,
+      "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
+      "unpriced": false,
+      "depth_shortfall": false
+    },
+    {
+      "id": "T00010",
+      "bucket": "month_maker",
+      "horizon": "month",
+      "mode": "maker",
+      "strategy": "Threshold strangle",
+      "event": "KXFED-26DEC",
+      "version": "baseline-v1",
+      "created_at": "2026-11-06T15:45:56.938462Z",
+      "opened_at": "2026-11-06T15:45:56.938462Z",
+      "status": "entering",
+      "quantity": 9,
+      "cost": 0,
+      "proceeds": 0,
+      "fees": 0,
+      "cost_cap": 2000,
+      "reserved": 2.0987,
+      "legs": [
+        {
+          "ticker": "KXFED-26DEC-T4.00",
+          "title": "Will the upper bound of the federal funds rate be above 4.00% following the Fed's Dec 9, 2026 meeting?",
+          "subtitle": "Above 4.00%",
+          "side": "no",
+          "limit": 0.22,
+          "bought": 0,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": true,
+          "close_time": "2026-12-09T18:55:00Z",
+          "decision_time": "2026-12-09T19:05:00Z",
+          "rules": "If the upper bound of the target federal funds rate published on the Federal Reserve's official website is greater than 4.00% following the Federal Reserve's Dec 9, 2026 meeting, then the market resolves to Yes.",
+          "buy_order": {
+            "action": "buy",
+            "side": "no",
+            "limit": 0.22,
+            "after": "2026-11-06T15:45:56.938462Z",
+            "participation": 0.05
+          }
+        },
+        {
+          "ticker": "KXFED-26DEC-T4.25",
+          "title": "Will the upper bound of the federal funds rate be above 4.25% following the Fed's Dec 9, 2026 meeting?",
+          "subtitle": "Above 4.25%",
+          "side": "yes",
+          "limit": 0.01,
+          "bought": 0,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": true,
+          "close_time": "2026-12-09T18:55:00Z",
+          "decision_time": "2026-12-09T19:05:00Z",
+          "rules": "If the upper bound of the target federal funds rate published on the Federal Reserve's official website is greater than 4.25% following the Federal Reserve's Dec 9, 2026 meeting, then the market resolves to Yes.",
+          "buy_order": {
+            "action": "buy",
+            "side": "yes",
+            "limit": 0.01,
+            "after": "2026-11-06T15:45:56.938462Z",
+            "participation": 0.05
+          }
+        }
+      ],
+      "fills": [],
+      "pnl": 0.0,
+      "mark": 0.0,
+      "entry_deadline": "2026-11-07T15:45:56.938462Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
@@ -759,16 +925,32 @@
         "long_maker": 15000.0,
         "long_taker": 15000.0
       }
+    },
+    {
+      "at": "2026-11-06T15:45:56.938462Z",
+      "equity": 99984.5833,
+      "cash": 99943.7118,
+      "fees": 1.8082,
+      "drawdown": 0.00015416700000001583,
+      "valuation_incomplete": false,
+      "buckets": {
+        "day_maker": 14995.0763,
+        "day_taker": 14991.3372,
+        "month_maker": 15000.0,
+        "month_taker": 14998.1698,
+        "long_maker": 15000.0,
+        "long_taker": 15000.0
+      }
     }
   ],
-  "runs": 3,
+  "runs": 4,
   "reviews": [],
   "changes": [],
   "health": {
     "errors": [],
     "data_gap": false,
-    "market_count": 687,
-    "book_count": 11,
+    "market_count": 923,
+    "book_count": 13,
     "requested_interval_minutes": 10,
     "status": "ok",
     "note": "Snapshot polling, not a continuous tick feed. GitHub schedules may be delayed."
@@ -778,19 +960,19 @@
       "horizon": "day",
       "strategy": "Threshold strangle",
       "event": "KXBTCD-26NOV0617",
-      "cost_per_pair": 0.49,
+      "cost_per_pair": 0.48,
       "legs": [
         {
           "ticker": "KXBTCD-26NOV0617-T74999.99",
           "side": "no",
           "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.29
+          "ask": 0.27
         },
         {
           "ticker": "KXBTCD-26NOV0617-T76499.99",
           "side": "yes",
           "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.2
+          "ask": 0.21
         }
       ]
     },
@@ -817,8 +999,28 @@
     {
       "horizon": "month",
       "strategy": "Threshold strangle",
+      "event": "KXFED-26DEC",
+      "cost_per_pair": 0.25,
+      "legs": [
+        {
+          "ticker": "KXFED-26DEC-T4.00",
+          "side": "no",
+          "title": "Will the upper bound of the federal funds rate be above 4.00% following the Fed's Dec 9, 2026 meeting?",
+          "ask": 0.23
+        },
+        {
+          "ticker": "KXFED-26DEC-T4.25",
+          "side": "yes",
+          "title": "Will the upper bound of the federal funds rate be above 4.25% following the Fed's Dec 9, 2026 meeting?",
+          "ask": 0.02
+        }
+      ]
+    },
+    {
+      "horizon": "month",
+      "strategy": "Threshold strangle",
       "event": "KXCPIYOY-26NOV",
-      "cost_per_pair": 0.41,
+      "cost_per_pair": 0.42,
       "legs": [
         {
           "ticker": "KXCPIYOY-26NOV-T3.5",
@@ -830,27 +1032,7 @@
           "ticker": "KXCPIYOY-26NOV-T3.8",
           "side": "yes",
           "title": "Will the rate of CPI inflation be above 3.8% for the year ending in November 2026?",
-          "ask": 0.33
-        }
-      ]
-    },
-    {
-      "horizon": "month",
-      "strategy": "Threshold strangle",
-      "event": "KXU3-26NOV",
-      "cost_per_pair": 0.29,
-      "legs": [
-        {
-          "ticker": "KXU3-26NOV-T4.0",
-          "side": "no",
-          "title": "Will the unemployment rate (U-3) be above 4.0% in November?",
-          "ask": 0.23
-        },
-        {
-          "ticker": "KXU3-26NOV-T4.3",
-          "side": "yes",
-          "title": "Will the unemployment rate (U-3) be above 4.3% in November?",
-          "ask": 0.06
+          "ask": 0.34
         }
       ]
     },
@@ -876,24 +1058,24 @@
     }
   ],
   "summary": {
-    "equity": 99982.7638,
-    "cash": 99946.4058,
-    "net_pnl": -17.2362,
-    "fees": 1.6842,
-    "drawdown": 0.00017236199999999373,
+    "equity": 99984.5833,
+    "cash": 99943.7118,
+    "net_pnl": -15.4167,
+    "fees": 1.8082,
+    "drawdown": 0.00015416700000001583,
     "valuation_incomplete": false,
     "max_drawdown": 0.00017236199999999373,
     "closed": 0,
-    "open": 8,
+    "open": 10,
     "buckets": [
       {
         "id": "day_maker",
         "horizon": "day",
         "mode": "maker",
         "initial": 15000,
-        "cash": 14980.91,
-        "equity": 14994.0575,
-        "net_pnl": -5.9425,
+        "cash": 14980.59,
+        "equity": 14995.0763,
+        "net_pnl": -4.9237,
         "realized": 0.0,
         "fees": 0.0,
         "closed": 0,
@@ -912,8 +1094,8 @@
         "mode": "taker",
         "initial": 15000,
         "cash": 14970.1577,
-        "equity": 14990.118,
-        "net_pnl": -9.882,
+        "equity": 14991.3372,
+        "net_pnl": -8.6628,
         "realized": 0.0,
         "fees": 1.4423,
         "closed": 0,
@@ -941,8 +1123,8 @@
         "win_rate": null,
         "win_ci": null,
         "expectancy": null,
-        "open": 2,
-        "submitted": 2,
+        "open": 3,
+        "submitted": 3,
         "entered": 0,
         "avg_hold": null
       },
@@ -951,19 +1133,19 @@
         "horizon": "month",
         "mode": "taker",
         "initial": 15000,
-        "cash": 14995.3381,
-        "equity": 14998.5883,
-        "net_pnl": -1.4117,
+        "cash": 14992.9641,
+        "equity": 14998.1698,
+        "net_pnl": -1.8302,
         "realized": 0.0,
-        "fees": 0.2419,
+        "fees": 0.3659,
         "closed": 0,
         "wins": 0,
         "win_rate": null,
         "win_ci": null,
         "expectancy": null,
-        "open": 2,
-        "submitted": 2,
-        "entered": 2,
+        "open": 3,
+        "submitted": 3,
+        "entered": 3,
         "avg_hold": null
       },
       {
@@ -1054,7 +1236,8 @@
       "KXIMPEACH",
       "KXU3",
       "KXCPIYOY",
-      "KXCPI"
+      "KXCPI",
+      "KXFED"
     ],
     "paused_buckets": [],
     "notes": "Initial 30-day forward test. Each horizon has $15k passive and $15k immediate-execution sleeves; $10k reserve. $100k total, never $100k per sleeve. Limits apply to combined gross debit plus fees."
