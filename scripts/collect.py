@@ -136,7 +136,7 @@ def enter(state,c,mode,books,now,cfg):
     if not qty:return
     cap=money(sum(l['limit']*qty+fee(l['limit'],qty,mode,l['fee_multiplier'],l['maker_enabled']) for l in legs))
     t={'id':f"T{len(state['trades'])+1:05d}",'bucket':bucket,'horizon':c['horizon'],'mode':mode,'strategy':c['kind'],'event':c['event'],'version':cfg['version'],'created_at':iso(now),'opened_at':iso(now),'status':'entering','quantity':qty,'cost':0,'proceeds':0,'fees':0,'cost_cap':min(budget,cfg['max_trade_cost']),'reserved':cap,'legs':legs,'fills':[],'pnl':0,'mark':0,'entry_deadline':iso(now+(3600 if c['horizon']=='day' else 86400)),'target_ratio':cfg['profit_target'],'reason':'Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.'}
-    t['replay_after']=iso(now);t['execution_model']=cfg.get('execution_model','touch-volume-v2')
+    t['replay_after']=iso(now);t['execution_model']=cfg.get('execution_model','touch-volume-v2') if mode=='maker' else 'book-snapshot-v1'
     state['trades'].append(t)
     if mode=='taker':
         for l in legs:ledger_fill(state,t,l,'buy',l['limit'],qty,'taker',now,'Entry at observed ask; capped at 5% displayed top-level size')
@@ -149,6 +149,7 @@ def process(state,books,markets,now,cfg):
     active=[t for t in state['trades'] if t['status'] not in ['closed','cancelled']]
     stats={'at':iso(now),'interval_hours':(now-ts(state['updated_at']))/3600,'attempted_trades':0,'complete_trades':0,'failed_trades':0,'backfilled_fills':0,'late_exit_trades':[],'max_exit_lag_hours':0}
     for t in active:
+        if t['mode']=='taker':t['execution_model']='book-snapshot-v1'
         t.setdefault('replay_after',state['updated_at'])
         if t['mode']=='maker':
             for l in t['legs']:requests[l['ticker']]=min(requests.get(l['ticker'],now),ts(t['replay_after']))
