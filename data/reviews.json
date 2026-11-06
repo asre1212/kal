@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "at": "2026-11-06T16:00:48.499468Z",
+    "type": "USER-REQUESTED CHANGE",
+    "title": "12-hour collection with chronological limit replay",
+    "summary": "Switch from ten-minute snapshots to 12-hour checks. Use complete timestamped trade history to estimate fills at or through resting limits, capped at 5% qualifying volume. Preserve all previously recorded fills and losses.",
+    "decisions": [
+      "REVISE: new trades use limit-replay-v2. Existing open trades retain their original entry version; subsequent replay fills carry execution model touch-volume-v2.",
+      "REPLAY: reconstruct entry before a contingent exit in the same interval, respect expiry and holding cutoffs, and retain checkpoints if history is incomplete. No OHLC-only fill inference.",
+      "MONITOR: time exits, loss triggers and immediate-execution positions still use observed order books; delayed exits are logged rather than fabricated.",
+      "REVIEW IN TWO DAYS: reduce to 8-hour checks if the slower cadence causes incomplete history, stale checks, or material exit delays. Do not judge cadence from two days of profits."
+    ],
+    "version": "limit-replay-v2"
+  }
+]

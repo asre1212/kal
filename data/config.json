@@ -1,5 +1,5 @@
 {
-  "version": "baseline-v1",
+  "version": "limit-replay-v2",
   "initial_capital": 100000,
   "reserve": 10000,
   "bucket_capital": 15000,
@@ -13,7 +13,7 @@
   "max_spread": 0.08,
   "min_volume": 100,
   "trial_days": 30,
-  "poll_minutes": 10,
+  "poll_minutes": 720,
   "horizons": {
     "day": {
       "label": "Same day",
@@ -47,5 +47,9 @@
     "KXFED"
   ],
   "paused_buckets": [],
-  "notes": "Initial 30-day forward test. Each horizon has $15k passive and $15k immediate-execution sleeves; $10k reserve. $100k total, never $100k per sleeve. Limits apply to combined gross debit plus fees."
+  "notes": "Initial 30-day forward test. Each horizon has $15k passive and $15k immediate-execution sleeves; $10k reserve. $100k total, never $100k per sleeve. Limits apply to combined gross debit plus fees.",
+  "execution_model": "touch-volume-v2",
+  "cadence_started_at": "2026-11-06T16:00:48.499468Z",
+  "cadence_review_due_at": "2026-11-08T16:00:48.499468Z",
+  "fallback_poll_minutes": 480
 }

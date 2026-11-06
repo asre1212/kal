@@ -6,6 +6,7 @@ from datetime import datetime,timezone
 from zoneinfo import ZoneInfo
 from engine import *
 from review_stats import diagnostics
+from replay import replay_trade,arm_exits,cutoff
 ROOT=Path(__file__).resolve().parents[1]
 BASE='https://external-api.kalshi.com/trade-api/v2'
 FIELDS=['ticker','event_ticker','title','yes_sub_title','close_time','expected_expiration_time','expiration_time','floor_strike','cap_strike','strike_type','yes_bid_dollars','yes_ask_dollars','no_bid_dollars','no_ask_dollars','volume_fp','result','settlement_value_dollars','status','rules_primary','rules_secondary','open_time']
@@ -91,12 +92,20 @@ def readbook(ticker):
     return {side:[[float(p),float(q)] for p,q in d.get(side+'_dollars',[])] for side in ['yes','no']}
 
 def prints_since(ticker,since,now):
-    cursor='';out=[]
-    for _ in range(10):
-        d=get('/markets/trades',ticker=ticker,min_ts=int(since),max_ts=int(now),limit=1000,is_block_trade='false',**({'cursor':cursor} if cursor else {}))
-        out.extend(d.get('trades',[]));cursor=d.get('cursor')
-        if not cursor:return out
-    ERRORS.append('Trade history truncated; no maker fills for '+ticker);return []
+    # Complete pagination or fail closed. Returning partial history would bias the backfill.
+    cursor='';out={};seen=set()
+    for _ in range(200):
+        d=get('/markets/trades',ticker=ticker,min_ts=math.floor(since),max_ts=math.ceil(now),limit=1000,is_block_trade='false',**({'cursor':cursor} if cursor else {}))
+        for p in d.get('trades',[]):
+            for field in ['trade_id','created_time','yes_price_dollars','no_price_dollars','count_fp']:
+                if p.get(field) is None:raise RuntimeError('Incomplete print '+field+' for '+ticker)
+            if (p.get('taker_side') or p.get('taker_outcome_side')) not in ['yes','no']:raise RuntimeError('Missing aggressor side for '+ticker)
+            if since<ts(p['created_time'])<=now and not p.get('is_block_trade'):out[p['trade_id']]=p
+        cursor=d.get('cursor')
+        if not cursor:return sorted(out.values(),key=lambda p:(ts(p['created_time']),p['trade_id']))
+        if cursor in seen:raise RuntimeError('Repeated history cursor for '+ticker)
+        seen.add(cursor)
+    raise RuntimeError('History exceeds 200 pages; leave orders unresolved for '+ticker)
 
 def enter(state,c,mode,books,now,cfg):
     bucket=f"{c['horizon']}_{mode}";legs=[]
@@ -127,6 +136,7 @@ def enter(state,c,mode,books,now,cfg):
     if not qty:return
     cap=money(sum(l['limit']*qty+fee(l['limit'],qty,mode,l['fee_multiplier'],l['maker_enabled']) for l in legs))
     t={'id':f"T{len(state['trades'])+1:05d}",'bucket':bucket,'horizon':c['horizon'],'mode':mode,'strategy':c['kind'],'event':c['event'],'version':cfg['version'],'created_at':iso(now),'opened_at':iso(now),'status':'entering','quantity':qty,'cost':0,'proceeds':0,'fees':0,'cost_cap':min(budget,cfg['max_trade_cost']),'reserved':cap,'legs':legs,'fills':[],'pnl':0,'mark':0,'entry_deadline':iso(now+(3600 if c['horizon']=='day' else 86400)),'target_ratio':cfg['profit_target'],'reason':'Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.'}
+    t['replay_after']=iso(now);t['execution_model']=cfg.get('execution_model','touch-volume-v2')
     state['trades'].append(t)
     if mode=='taker':
         for l in legs:ledger_fill(state,t,l,'buy',l['limit'],qty,'taker',now,'Entry at observed ask; capped at 5% displayed top-level size')
@@ -135,69 +145,59 @@ def enter(state,c,mode,books,now,cfg):
         for l in legs:l['buy_order']={'action':'buy','side':l['side'],'limit':l['limit'],'after':iso(now),'participation':cfg['participation']}
 
 def process(state,books,markets,now,cfg):
-    md={m['ticker']:m for m in markets};prints={}
-    for t in state['trades']:
-        if t['status'] in ['closed','cancelled']:continue
+    md={m['ticker']:m for m in markets};requests={};history={};prints={};volume_used={}
+    active=[t for t in state['trades'] if t['status'] not in ['closed','cancelled']]
+    stats={'at':iso(now),'interval_hours':(now-ts(state['updated_at']))/3600,'attempted_trades':0,'complete_trades':0,'failed_trades':0,'backfilled_fills':0,'late_exit_trades':[],'max_exit_lag_hours':0}
+    for t in active:
+        t.setdefault('replay_after',state['updated_at'])
+        if t['mode']=='maker':
+            for l in t['legs']:requests[l['ticker']]=min(requests.get(l['ticker'],now),ts(t['replay_after']))
+    with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+        for ticker,rows in zip(requests,pool.map(lambda ticker:safe(prints_since,ticker,requests[ticker],now),requests)):
+            history[ticker]=rows;prints[(ticker,iso(requests[ticker]))]=rows
+    for t in active:
+        if t['mode']=='maker':
+            stats['attempted_trades']+=1
+            if any(history.get(l['ticker']) is None for l in t['legs']):
+                stats['failed_trades']+=1;t['backfill_status']='incomplete: checkpoint retained';continue
+            stats['complete_trades']+=1
+            stats['backfilled_fills']+=replay_trade(state,t,history,now,cfg,volume_used)
+            t['backfill_status']='complete';t['execution_model']=cfg.get('execution_model','touch-volume-v2')
+            if t['status'] in ['closed','cancelled']:continue
+        deadline=ts(t['entry_deadline']) if t['status']=='entering' else cutoff(state,t,cfg)
+        if now>deadline and any(l['bought']>l['sold'] for l in t['legs']):
+            lag=(now-deadline)/3600;t['time_exit_lag_hours']=round(lag,3)
+            stats['late_exit_trades'].append(t['id']);stats['max_exit_lag_hours']=max(stats['max_exit_lag_hours'],lag)
+        # Historical limits are resolved before today's final settlement, never the reverse.
         for l in t['legs']:
             m=md.get(l['ticker'])
-            # Settle only on a published final result, never inferred from a chart.
             if m and m.get('status') in ['settled','finalized'] and m.get('result') in ['yes','no','scalar']:
                 if m['result']=='scalar':
                     if m.get('settlement_value_dollars') is None:continue
                     p=float(m['settlement_value_dollars']);p=p if l['side']=='yes' else 1-p
                 else:p=1 if m['result']==l['side'] else 0
                 q=l['bought']-l['sold']
-                if q:ledger_fill(state,t,l,'sell',p,q,'settlement',now,'Official final result')
+                if q:ledger_fill(state,t,l,'sell',p,q,'settlement',now,'Official final result after limit replay')
                 l['settled']=True
-        if t['status']=='entering':
-            for l in t['legs']:
-                if l.get('settled'):continue
-                order=l.get('buy_order')
-                if order:
-                    if now-ts(order['after'])>45*60:
-                        order['after']=iso(now);t['data_gap']=True
-                    key=(l['ticker'],order['after'])
-                    until=min(now,ts(t['entry_deadline']))
-                    if key not in prints:prints[key]=(safe(prints_since,l['ticker'],ts(order['after']),until) or []) if until>ts(order['after']) else []
-                    q=observed_maker_fills(order,prints[key],t['quantity']-l['bought'])
-                    if q:ledger_fill(state,t,l,'buy',order['limit'],q,'maker',now,'Estimated maker fill: strict trade-through, 5% volume')
-                    order['after']=iso(now)
-            t['reserved']=money(max(0,t['reserved']-sum(f['price']*f['quantity']+f['fee'] for f in t['fills'] if f['at']==iso(now) and f['action']=='buy')))
-            if all(l['bought']==t['quantity'] for l in t['legs']):t['status']='open';t['reserved']=0
-            elif now>=ts(t['entry_deadline']) or any(l.get('settled') for l in t['legs']):
-                t['reserved']=0
-                if t['cost']==0:t['status']='cancelled';t['exit_reason']='Entry expired without sufficient trade-through';t['closed_at']=iso(now)
-                else:close_at_book(state,t,books,now,'Unpaired/partial entry timeout',cfg['participation'])
+        if t['status']=='entering' and (now>=ts(t['entry_deadline']) or any(l.get('settled') for l in t['legs'])):
+            t['reserved']=0
+            if t['cost']==0:t['status']='cancelled';t['exit_reason']='Entry expired without sufficient qualifying prints';t['closed_at']=iso(min(now,ts(t['entry_deadline'])))
+            else:close_at_book(state,t,books,now,'Unpaired/partial entry timeout; next observed book',cfg['participation'])
         if t['status']=='open':
-            value=mark_trade(t,books)
-            # A $1 maximum payout limits attainable profit on expensive timing spreads.
-            max_profit=max(0,(t['quantity']-t['cost'])/max(t['cost'],.0001))
-            t['target_ratio']=min(cfg['profit_target'],max_profit*.5)
-            t['target_profit']=money(t['cost']*t['target_ratio'])
-            hold_end=ts(t['opened_at'])+cfg['horizons'][t['horizon']]['max_hold_hours']*3600
-            cutoff=min(hold_end,min(ts(l['close_time']) for l in t['legs'])-1800,ts(state['trial_end']))
+            mark_trade(t,books)
+            maximum=max(0,(t['quantity']-t['cost'])/max(t['cost'],.0001))
+            t['target_ratio']=min(cfg['profit_target'],maximum*.5);t['target_profit']=money(t['cost']*t['target_ratio'])
             reason=None
-            if now>=cutoff:reason='Time exit'
-            elif not t['unpriced'] and t['pnl']<=-cfg['loss_trigger']*t['cost']:reason='Loss trigger (execution not guaranteed)'
-            elif not t['unpriced'] and t['pnl']>=t['target_profit'] and t['mode']=='taker':reason='Combined net profit target'
+            if now>=cutoff(state,t,cfg):reason='Time exit at next observed book (not backfilled)'
+            elif not t['unpriced'] and t['pnl']<=-cfg['loss_trigger']*t['cost']:reason='Loss trigger at observed book (not continuous)'
+            elif t.get('profit_recovered_at'):reason='Limit profit recovered; residual exit at observed book'
+            elif not t['unpriced'] and t['pnl']>=t['target_profit'] and t['mode']=='taker':reason='Combined net profit target at observed book'
             if reason:close_at_book(state,t,books,now,reason,cfg['participation'])
-            elif t['mode']=='maker':
-                for l in t['legs']:
-                    q=l['bought']-l['sold']
-                    if not q:continue
-                    if not l.get('sell_order'):
-                        price=min(.99,math.ceil((t['cost']+t['target_profit'])/t['quantity']*100)/100)
-                        l['sell_order']={'action':'sell','side':l['side'],'limit':price,'after':iso(now),'participation':cfg['participation']}
-                    order=l['sell_order'];key=(l['ticker'],order['after'])
-                    if now-ts(order['after'])>45*60:
-                        order['after']=iso(now);key=(l['ticker'],order['after']);t['data_gap']=True
-                    if key not in prints:prints[key]=safe(prints_since,l['ticker'],ts(order['after']),now) or []
-                    n=observed_maker_fills(order,prints[key],q)
-                    if n:ledger_fill(state,t,l,'sell',order['limit'],n,'maker',now,'Estimated maker exit: strict trade-through')
-                    order['after']=iso(now)
-                if t['proceeds']>=t['cost']+t['target_profit']:close_at_book(state,t,books,now,'Profit recovered; close remaining leg',cfg['participation'])
+            else:arm_exits(state,t,cfg,now)
         elif t['status']=='closing':close_at_book(state,t,books,now,t.get('exit_reason','Close remaining'),cfg['participation'])
         finalize(t,now)
+    state['backfill']=stats
+    state.setdefault('collection_history',[]).append(stats)
     return prints
 
 def run():
@@ -228,15 +228,16 @@ def run():
     # Orders become active only after the source quotes were actually received.
     collection_started_at=iso(now);now=time.time()
     prints=process(state,books,universe,now,cfg)
+    now=time.time()  # New orders cannot predate completion of this historical retrieval.
     # Mark before permitting new risk; missing books never create optimistic gains.
     summary=summarize(state,cfg,books,now)
-    data_gap=bool(state['runs'] and now-ts(state['updated_at'])>45*60)
+    data_gap=bool(state['runs'] and now-ts(state['updated_at'])>(cfg['poll_minutes']+60)*60)
     if now<ts(state['trial_end']) and not summary['paused_for_risk'] and not summary['valuation_incomplete'] and not ERRORS:
         for c in selected:
             for mode in ['taker','maker']:enter(state,c,mode,books,now,cfg)
     state['equity_history'].pop();summarize(state,cfg,books,now)
     state['runs']+=1;state['updated_at']=iso(now)
-    state['health']={'errors':ERRORS,'data_gap':data_gap,'market_count':len(universe),'book_count':len(books),'requested_interval_minutes':cfg['poll_minutes'],'status':'degraded' if ERRORS else 'ok','note':'Snapshot polling, not a continuous tick feed. GitHub schedules may be delayed.'}
+    state['health']={'backfill':state['backfill'],'errors':ERRORS,'data_gap':data_gap,'market_count':len(universe),'book_count':len(books),'requested_interval_minutes':cfg['poll_minutes'],'status':'degraded' if ERRORS else 'ok','note':f"{cfg['poll_minutes']/60:g}-hour snapshot collection with chronological resting-limit replay. Market stops/time exits require observed books; GitHub schedules may be delayed."}
     state['candidates']=[{'horizon':c['horizon'],'strategy':c['kind'],'event':c['event'],'cost_per_pair':round(c['indicative_cost'],4),'legs':[{'ticker':m['ticker'],'side':side,'title':m['title'],'ask':float(m[side+'_ask_dollars'])} for m,side in c['legs']]} for c in selected]
     # Archive source evidence. These are observations, not fabricated history.
     day=iso(now)[:10];obs={'at':iso(now),'collection_started_at':collection_started_at,'books':books,'markets':[{k:m.get(k) for k in FIELDS} for m in universe if m['ticker'] in needed],'trade_prints':[{'ticker':k[0],'after':k[1],'prints':v} for k,v in prints.items()],'errors':ERRORS}
