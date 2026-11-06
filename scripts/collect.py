@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Public GET-only collector and forward simulator; run once per scheduled check."""
-import json,os,time,math,urllib.request,urllib.parse,collections,concurrent.futures
+import json,os,time,math,urllib.request,urllib.parse,urllib.error,collections,concurrent.futures,threading
 from pathlib import Path
 from datetime import datetime,timezone
 from zoneinfo import ZoneInfo
@@ -11,15 +11,27 @@ ROOT=Path(__file__).resolve().parents[1]
 BASE='https://external-api.kalshi.com/trade-api/v2'
 FIELDS=['ticker','event_ticker','title','yes_sub_title','close_time','expected_expiration_time','expiration_time','floor_strike','cap_strike','strike_type','yes_bid_dollars','yes_ask_dollars','no_bid_dollars','no_ask_dollars','volume_fp','result','settlement_value_dollars','status','rules_primary','rules_secondary','open_time']
 ERRORS=[]
+REQUEST_LOCK=threading.Lock()
+NEXT_REQUEST=0.0
 def get(path,**params):
+    global NEXT_REQUEST
     url=BASE+path+('?' + urllib.parse.urlencode(params) if params else '')
-    for attempt in range(3):
+    for attempt in range(5):
         try:
+            # Pace all worker threads together; pagination must not burst through API limits.
+            with REQUEST_LOCK:
+                delay=max(0,NEXT_REQUEST-time.monotonic())
+                if delay:time.sleep(delay)
+                NEXT_REQUEST=time.monotonic()+.25
             req=urllib.request.Request(url,headers={'User-Agent':'KalPaperResearch/1.0','Accept':'application/json'})
             with urllib.request.urlopen(req,timeout=18) as r:return json.load(r)
         except Exception as e:
-            if attempt==2:raise RuntimeError(f'{path}: {e}')
-            time.sleep(.3*(attempt+1))
+            if attempt==4:raise RuntimeError(f'{path}: {e}')
+            delay=min(16,2**(attempt+1))
+            if isinstance(e,urllib.error.HTTPError) and e.code==429:
+                try:delay=max(delay,min(20,float(e.headers.get('Retry-After',0))))
+                except (TypeError,ValueError):pass
+            time.sleep(delay)
 def safe(fn,*args):
     try:return fn(*args)
     except Exception as e:ERRORS.append(str(e));return None
