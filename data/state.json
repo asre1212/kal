@@ -2,7 +2,7 @@
   "schema": 1,
   "started_at": "2026-11-06T15:29:05.429626Z",
   "trial_end": "2026-12-06T15:29:05.429626Z",
-  "updated_at": "2026-11-06T16:10:36.102588Z",
+  "updated_at": "2026-11-06T16:14:52.110664Z",
   "buckets": {
     "day_maker": {
       "horizon": "day",
@@ -38,7 +38,7 @@
       "horizon": "long",
       "mode": "taker",
       "initial": 15000,
-      "cash": 15000
+      "cash": 14999.0483
     }
   },
   "trades": [
@@ -480,7 +480,7 @@
           "close_time": "2026-11-06T22:00:00Z",
           "decision_time": "2026-11-06T22:00:00Z",
           "rules": "If the close price of the 1-minute candlestick for natural gas on November 06, 2026 at 5:00 PM EST is above 2.999 USD/MMBtu, then the market resolves to Yes.",
-          "mark": 1.916,
+          "mark": 2.0147,
           "unpriced": false
         }
       ],
@@ -508,8 +508,8 @@
           "reason": "Entry at observed ask; capped at 5% displayed top-level size"
         }
       ],
-      "pnl": 0.1129,
-      "mark": 2.0558,
+      "pnl": 0.2116,
+      "mark": 2.1545,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
@@ -554,7 +554,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.04,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05
           }
         },
@@ -575,10 +575,10 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.28,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05
           },
-          "mark": 1.916,
+          "mark": 2.0147,
           "unpriced": false
         }
       ],
@@ -595,14 +595,14 @@
           "reason": "Estimated maker fill: strict trade-through, 5% volume"
         }
       ],
-      "pnl": 0.516,
-      "mark": 1.916,
+      "pnl": 0.6147,
+      "mark": 2.0147,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T16:10:34.043278Z",
+      "replay_after": "2026-11-06T16:14:50.006826Z",
       "backfill_status": "complete",
       "execution_model": "touch-volume-v2"
     },
@@ -727,7 +727,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.06,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05,
             "credit": 0.05
           }
@@ -749,7 +749,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.28,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05
           }
         }
@@ -762,7 +762,7 @@
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T16:10:34.043278Z",
+      "replay_after": "2026-11-06T16:14:50.006826Z",
       "backfill_status": "complete",
       "execution_model": "touch-volume-v2"
     },
@@ -887,7 +887,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.21,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05
           }
         },
@@ -908,7 +908,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.01,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05,
             "credit": 0.5045000000000001
           }
@@ -922,7 +922,7 @@
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T16:10:34.043278Z",
+      "replay_after": "2026-11-06T16:14:50.006826Z",
       "backfill_status": "complete",
       "execution_model": "touch-volume-v2"
     },
@@ -1047,7 +1047,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.22,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05
           }
         },
@@ -1068,7 +1068,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.01,
-            "after": "2026-11-06T16:10:34.043278Z",
+            "after": "2026-11-06T16:14:50.006826Z",
             "participation": 0.05
           }
         }
@@ -1081,9 +1081,166 @@
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T16:10:34.043278Z",
+      "replay_after": "2026-11-06T16:14:50.006826Z",
       "backfill_status": "complete",
       "execution_model": "touch-volume-v2"
+    },
+    {
+      "id": "T00011",
+      "bucket": "long_taker",
+      "horizon": "long",
+      "mode": "taker",
+      "strategy": "Outside timing window",
+      "event": "KXIMPEACH",
+      "version": "limit-replay-v2",
+      "created_at": "2026-11-06T16:14:52.110664Z",
+      "opened_at": "2026-11-06T16:14:52.110664Z",
+      "status": "open",
+      "quantity": 1,
+      "cost": 0.9517,
+      "proceeds": 0,
+      "fees": 0.0317,
+      "cost_cap": 2000,
+      "reserved": 0,
+      "legs": [
+        {
+          "ticker": "KXIMPEACH-27-JUN01",
+          "title": "Will the President be impeached before Jun 1, 2027?",
+          "subtitle": "Before Jun 1, 2027",
+          "side": "yes",
+          "limit": 0.31,
+          "bought": 1,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2027-06-01T14:00:00Z",
+          "decision_time": "2027-06-01T14:00:00Z",
+          "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Jun 1, 2027, then the market resolves to Yes.",
+          "mark": 0.2755,
+          "unpriced": false
+        },
+        {
+          "ticker": "KXIMPEACH-27-AUG01",
+          "title": "Will the President be impeached before Aug 1, 2027?",
+          "subtitle": "Before Aug 1, 2027",
+          "side": "no",
+          "limit": 0.61,
+          "bought": 1,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2027-08-01T14:00:00Z",
+          "decision_time": "2027-08-01T14:00:00Z",
+          "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Aug 1, 2027, then the market resolves to Yes.",
+          "mark": 0.5832,
+          "unpriced": false
+        }
+      ],
+      "fills": [
+        {
+          "at": "2026-11-06T16:14:52.110664Z",
+          "ticker": "KXIMPEACH-27-JUN01",
+          "side": "yes",
+          "action": "buy",
+          "price": 0.31,
+          "quantity": 1,
+          "fee": 0.015,
+          "mode": "taker",
+          "reason": "Entry at observed ask; capped at 5% displayed top-level size"
+        },
+        {
+          "at": "2026-11-06T16:14:52.110664Z",
+          "ticker": "KXIMPEACH-27-AUG01",
+          "side": "no",
+          "action": "buy",
+          "price": 0.61,
+          "quantity": 1,
+          "fee": 0.0167,
+          "mode": "taker",
+          "reason": "Entry at observed ask; capped at 5% displayed top-level size"
+        }
+      ],
+      "pnl": -0.093,
+      "mark": 0.8587,
+      "entry_deadline": "2026-11-07T16:14:52.110664Z",
+      "target_ratio": 0.25,
+      "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
+      "replay_after": "2026-11-06T16:14:52.110664Z",
+      "execution_model": "book-snapshot-v1",
+      "unpriced": false,
+      "depth_shortfall": false
+    },
+    {
+      "id": "T00012",
+      "bucket": "long_maker",
+      "horizon": "long",
+      "mode": "maker",
+      "strategy": "Outside timing window",
+      "event": "KXIMPEACH",
+      "version": "limit-replay-v2",
+      "created_at": "2026-11-06T16:14:52.110664Z",
+      "opened_at": "2026-11-06T16:14:52.110664Z",
+      "status": "entering",
+      "quantity": 1,
+      "cost": 0,
+      "proceeds": 0,
+      "fees": 0,
+      "cost_cap": 2000,
+      "reserved": 0.89,
+      "legs": [
+        {
+          "ticker": "KXIMPEACH-27-JUN01",
+          "title": "Will the President be impeached before Jun 1, 2027?",
+          "subtitle": "Before Jun 1, 2027",
+          "side": "yes",
+          "limit": 0.29,
+          "bought": 0,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2027-06-01T14:00:00Z",
+          "decision_time": "2027-06-01T14:00:00Z",
+          "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Jun 1, 2027, then the market resolves to Yes.",
+          "buy_order": {
+            "action": "buy",
+            "side": "yes",
+            "limit": 0.29,
+            "after": "2026-11-06T16:14:52.110664Z",
+            "participation": 0.05
+          }
+        },
+        {
+          "ticker": "KXIMPEACH-27-AUG01",
+          "title": "Will the President be impeached before Aug 1, 2027?",
+          "subtitle": "Before Aug 1, 2027",
+          "side": "no",
+          "limit": 0.6,
+          "bought": 0,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2027-08-01T14:00:00Z",
+          "decision_time": "2027-08-01T14:00:00Z",
+          "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Aug 1, 2027, then the market resolves to Yes.",
+          "buy_order": {
+            "action": "buy",
+            "side": "no",
+            "limit": 0.6,
+            "after": "2026-11-06T16:14:52.110664Z",
+            "participation": 0.05
+          }
+        }
+      ],
+      "fills": [],
+      "pnl": 0.0,
+      "mark": 0.0,
+      "entry_deadline": "2026-11-07T16:14:52.110664Z",
+      "target_ratio": 0.25,
+      "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
+      "replay_after": "2026-11-06T16:14:52.110664Z",
+      "execution_model": "touch-volume-v2",
+      "unpriced": false,
+      "depth_shortfall": false
     }
   ],
   "equity_history": [
@@ -1195,9 +1352,25 @@
         "long_maker": 15000.0,
         "long_taker": 15000.0
       }
+    },
+    {
+      "at": "2026-11-06T16:14:52.110664Z",
+      "equity": 99974.5327,
+      "cash": 99964.2709,
+      "fees": 3.6491,
+      "drawdown": 0.0002546729999998934,
+      "valuation_incomplete": false,
+      "buckets": {
+        "day_maker": 14989.6801,
+        "day_taker": 14986.7476,
+        "month_maker": 15000.0,
+        "month_taker": 14998.198,
+        "long_maker": 15000.0,
+        "long_taker": 14999.907
+      }
     }
   ],
-  "runs": 6,
+  "runs": 7,
   "reviews": [
     {
       "at": "2026-11-06T16:00:48.499468Z",
@@ -1216,8 +1389,8 @@
   "changes": [],
   "health": {
     "backfill": {
-      "at": "2026-11-06T16:10:34.043278Z",
-      "interval_hours": 0.10777425958050622,
+      "at": "2026-11-06T16:14:50.006826Z",
+      "interval_hours": 0.0705289551284578,
       "attempted_trades": 4,
       "complete_trades": 4,
       "failed_trades": 0,
@@ -1238,19 +1411,19 @@
       "horizon": "day",
       "strategy": "Threshold strangle",
       "event": "KXBTCD-26NOV0617",
-      "cost_per_pair": 0.38,
+      "cost_per_pair": 0.43,
       "legs": [
         {
           "ticker": "KXBTCD-26NOV0617-T74999.99",
           "side": "no",
           "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.22
+          "ask": 0.31
         },
         {
           "ticker": "KXBTCD-26NOV0617-T76499.99",
           "side": "yes",
           "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.16
+          "ask": 0.12
         }
       ]
     },
@@ -1298,7 +1471,7 @@
       "horizon": "month",
       "strategy": "Threshold strangle",
       "event": "KXCPIYOY-26NOV",
-      "cost_per_pair": 0.42,
+      "cost_per_pair": 0.43,
       "legs": [
         {
           "ticker": "KXCPIYOY-26NOV-T3.5",
@@ -1310,7 +1483,7 @@
           "ticker": "KXCPIYOY-26NOV-T3.8",
           "side": "yes",
           "title": "Will the rate of CPI inflation be above 3.8% for the year ending in November 2026?",
-          "ask": 0.34
+          "ask": 0.35
         }
       ]
     },
@@ -1318,13 +1491,13 @@
       "horizon": "long",
       "strategy": "Outside timing window",
       "event": "KXIMPEACH",
-      "cost_per_pair": 0.91,
+      "cost_per_pair": 0.92,
       "legs": [
         {
           "ticker": "KXIMPEACH-27-JUN01",
           "side": "yes",
           "title": "Will the President be impeached before Jun 1, 2027?",
-          "ask": 0.3
+          "ask": 0.31
         },
         {
           "ticker": "KXIMPEACH-27-AUG01",
@@ -1336,15 +1509,15 @@
     }
   ],
   "summary": {
-    "equity": 99974.4283,
-    "cash": 99965.2226,
-    "net_pnl": -25.5717,
-    "fees": 3.6174,
-    "drawdown": 0.0002557170000000042,
+    "equity": 99974.5327,
+    "cash": 99964.2709,
+    "net_pnl": -25.4673,
+    "fees": 3.6491,
+    "drawdown": 0.0002546729999998934,
     "valuation_incomplete": false,
     "max_drawdown": 0.0002600169999999343,
     "closed": 2,
-    "open": 8,
+    "open": 10,
     "buckets": [
       {
         "id": "day_maker",
@@ -1352,8 +1525,8 @@
         "mode": "maker",
         "initial": 15000,
         "cash": 14987.6654,
-        "equity": 14989.5814,
-        "net_pnl": -10.4186,
+        "equity": 14989.6801,
+        "net_pnl": -10.3199,
         "realized": -10.9346,
         "fees": 0.9046,
         "closed": 1,
@@ -1375,8 +1548,8 @@
         "mode": "taker",
         "initial": 15000,
         "cash": 14984.5931,
-        "equity": 14986.6489,
-        "net_pnl": -13.3511,
+        "equity": 14986.7476,
+        "net_pnl": -13.2524,
         "realized": -13.464,
         "fees": 2.3469,
         "closed": 1,
@@ -1447,8 +1620,8 @@
         "win_rate": null,
         "win_ci": null,
         "expectancy": null,
-        "open": 0,
-        "submitted": 0,
+        "open": 1,
+        "submitted": 1,
         "entered": 0,
         "avg_hold": null
       },
@@ -1457,19 +1630,19 @@
         "horizon": "long",
         "mode": "taker",
         "initial": 15000,
-        "cash": 15000,
-        "equity": 15000.0,
-        "net_pnl": 0.0,
+        "cash": 14999.0483,
+        "equity": 14999.907,
+        "net_pnl": -0.093,
         "realized": 0.0,
-        "fees": 0.0,
+        "fees": 0.0317,
         "closed": 0,
         "wins": 0,
         "win_rate": null,
         "win_ci": null,
         "expectancy": null,
-        "open": 0,
-        "submitted": 0,
-        "entered": 0,
+        "open": 1,
+        "submitted": 1,
+        "entered": 1,
         "avg_hold": null
       }
     ],
@@ -1579,7 +1752,7 @@
       },
       {
         "bucket": "long_maker",
-        "version": "baseline-v1",
+        "version": "limit-replay-v2",
         "closed": 0,
         "event_blocks": 0,
         "net_return_on_outlay": null,
@@ -1590,7 +1763,7 @@
       },
       {
         "bucket": "long_taker",
-        "version": "baseline-v1",
+        "version": "limit-replay-v2",
         "closed": 0,
         "event_blocks": 0,
         "net_return_on_outlay": null,
@@ -1602,8 +1775,8 @@
     ]
   },
   "backfill": {
-    "at": "2026-11-06T16:10:34.043278Z",
-    "interval_hours": 0.10777425958050622,
+    "at": "2026-11-06T16:14:50.006826Z",
+    "interval_hours": 0.0705289551284578,
     "attempted_trades": 4,
     "complete_trades": 4,
     "failed_trades": 0,
@@ -1625,6 +1798,16 @@
     {
       "at": "2026-11-06T16:10:34.043278Z",
       "interval_hours": 0.10777425958050622,
+      "attempted_trades": 4,
+      "complete_trades": 4,
+      "failed_trades": 0,
+      "backfilled_fills": 0,
+      "late_exit_trades": [],
+      "max_exit_lag_hours": 0
+    },
+    {
+      "at": "2026-11-06T16:14:50.006826Z",
+      "interval_hours": 0.0705289551284578,
       "attempted_trades": 4,
       "complete_trades": 4,
       "failed_trades": 0,
