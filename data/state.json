@@ -2,7 +2,7 @@
   "schema": 1,
   "started_at": "2026-11-06T15:29:05.429626Z",
   "trial_end": "2026-12-06T15:29:05.429626Z",
-  "updated_at": "2026-11-06T16:04:06.055943Z",
+  "updated_at": "2026-11-06T16:10:36.102588Z",
   "buckets": {
     "day_maker": {
       "horizon": "day",
@@ -464,7 +464,7 @@
           "close_time": "2026-11-06T22:00:00Z",
           "decision_time": "2026-11-06T22:00:00Z",
           "rules": "If the close price of the 1-minute candlestick for natural gas on November 06, 2026 at 5:00 PM EST is above 2.899 USD/MMBtu, then the market resolves to Yes.",
-          "mark": 0.3272,
+          "mark": 0.1398,
           "unpriced": false
         },
         {
@@ -480,7 +480,7 @@
           "close_time": "2026-11-06T22:00:00Z",
           "decision_time": "2026-11-06T22:00:00Z",
           "rules": "If the close price of the 1-minute candlestick for natural gas on November 06, 2026 at 5:00 PM EST is above 2.999 USD/MMBtu, then the market resolves to Yes.",
-          "mark": 1.6214,
+          "mark": 1.916,
           "unpriced": false
         }
       ],
@@ -508,15 +508,16 @@
           "reason": "Entry at observed ask; capped at 5% displayed top-level size"
         }
       ],
-      "pnl": 0.0057,
-      "mark": 1.9486,
+      "pnl": 0.1129,
+      "mark": 2.0558,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
       "target_profit": 0.4857,
-      "replay_after": "2026-11-06T15:45:56.938462Z"
+      "replay_after": "2026-11-06T15:45:56.938462Z",
+      "execution_model": "book-snapshot-v1"
     },
     {
       "id": "T00004",
@@ -553,7 +554,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.04,
-            "after": "2026-11-06T16:04:04.745637Z",
+            "after": "2026-11-06T16:10:34.043278Z",
             "participation": 0.05
           }
         },
@@ -574,10 +575,10 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.28,
-            "after": "2026-11-06T16:04:04.745637Z",
+            "after": "2026-11-06T16:10:34.043278Z",
             "participation": 0.05
           },
-          "mark": 1.6214,
+          "mark": 1.916,
           "unpriced": false
         }
       ],
@@ -594,14 +595,14 @@
           "reason": "Estimated maker fill: strict trade-through, 5% volume"
         }
       ],
-      "pnl": 0.2214,
-      "mark": 1.6214,
+      "pnl": 0.516,
+      "mark": 1.916,
       "entry_deadline": "2026-11-06T16:29:05.429626Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T16:04:04.745637Z",
+      "replay_after": "2026-11-06T16:10:34.043278Z",
       "backfill_status": "complete",
       "execution_model": "touch-volume-v2"
     },
@@ -636,7 +637,7 @@
           "close_time": "2026-12-10T13:29:00Z",
           "decision_time": "2026-12-10T15:00:00Z",
           "rules": "If the Consumer Price Index (CPI) increases by more than 3.5% in the twelve months ending November 2026 (as represented by the one-decimal place value reported by the Bureau of Labor Statistics), then the market resolves to Yes.",
-          "mark": 0.1681,
+          "mark": 0.1963,
           "unpriced": false
         },
         {
@@ -680,15 +681,16 @@
           "reason": "Entry at observed ask; capped at 5% displayed top-level size"
         }
       ],
-      "pnl": -0.3263,
-      "mark": 0.9657,
+      "pnl": -0.2981,
+      "mark": 0.9939,
       "entry_deadline": "2026-11-07T15:43:57.675016Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
       "target_profit": 0.323,
-      "replay_after": "2026-11-06T15:45:56.938462Z"
+      "replay_after": "2026-11-06T15:45:56.938462Z",
+      "execution_model": "book-snapshot-v1"
     },
     {
       "id": "T00006",
@@ -725,8 +727,9 @@
             "action": "buy",
             "side": "no",
             "limit": 0.06,
-            "after": "2026-11-06T15:45:56.938462Z",
-            "participation": 0.05
+            "after": "2026-11-06T16:10:34.043278Z",
+            "participation": 0.05,
+            "credit": 0.05
           }
         },
         {
@@ -746,7 +749,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.28,
-            "after": "2026-11-06T15:45:56.938462Z",
+            "after": "2026-11-06T16:10:34.043278Z",
             "participation": 0.05
           }
         }
@@ -759,8 +762,9 @@
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T15:45:56.938462Z",
-      "backfill_status": "incomplete: checkpoint retained"
+      "replay_after": "2026-11-06T16:10:34.043278Z",
+      "backfill_status": "complete",
+      "execution_model": "touch-volume-v2"
     },
     {
       "id": "T00007",
@@ -845,7 +849,8 @@
       "unpriced": false,
       "depth_shortfall": false,
       "target_profit": 0.8425,
-      "replay_after": "2026-11-06T15:45:56.938462Z"
+      "replay_after": "2026-11-06T15:45:56.938462Z",
+      "execution_model": "book-snapshot-v1"
     },
     {
       "id": "T00008",
@@ -882,7 +887,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.21,
-            "after": "2026-11-06T15:45:56.938462Z",
+            "after": "2026-11-06T16:10:34.043278Z",
             "participation": 0.05
           }
         },
@@ -903,8 +908,9 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.01,
-            "after": "2026-11-06T15:45:56.938462Z",
-            "participation": 0.05
+            "after": "2026-11-06T16:10:34.043278Z",
+            "participation": 0.05,
+            "credit": 0.5045000000000001
           }
         }
       ],
@@ -916,8 +922,9 @@
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T15:45:56.938462Z",
-      "backfill_status": "incomplete: checkpoint retained"
+      "replay_after": "2026-11-06T16:10:34.043278Z",
+      "backfill_status": "complete",
+      "execution_model": "touch-volume-v2"
     },
     {
       "id": "T00009",
@@ -1002,7 +1009,8 @@
       "unpriced": false,
       "depth_shortfall": false,
       "replay_after": "2026-11-06T15:45:56.938462Z",
-      "target_profit": 0.5935
+      "target_profit": 0.5935,
+      "execution_model": "book-snapshot-v1"
     },
     {
       "id": "T00010",
@@ -1039,7 +1047,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.22,
-            "after": "2026-11-06T16:04:04.745637Z",
+            "after": "2026-11-06T16:10:34.043278Z",
             "participation": 0.05
           }
         },
@@ -1060,7 +1068,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.01,
-            "after": "2026-11-06T16:04:04.745637Z",
+            "after": "2026-11-06T16:10:34.043278Z",
             "participation": 0.05
           }
         }
@@ -1073,7 +1081,7 @@
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
       "unpriced": false,
       "depth_shortfall": false,
-      "replay_after": "2026-11-06T16:04:04.745637Z",
+      "replay_after": "2026-11-06T16:10:34.043278Z",
       "backfill_status": "complete",
       "execution_model": "touch-volume-v2"
     }
@@ -1171,9 +1179,25 @@
         "long_maker": 15000.0,
         "long_taker": 15000.0
       }
+    },
+    {
+      "at": "2026-11-06T16:10:36.102588Z",
+      "equity": 99974.4283,
+      "cash": 99965.2226,
+      "fees": 3.6174,
+      "drawdown": 0.0002557170000000042,
+      "valuation_incomplete": false,
+      "buckets": {
+        "day_maker": 14989.5814,
+        "day_taker": 14986.6489,
+        "month_maker": 15000.0,
+        "month_taker": 14998.198,
+        "long_maker": 15000.0,
+        "long_taker": 15000.0
+      }
     }
   ],
-  "runs": 5,
+  "runs": 6,
   "reviews": [
     {
       "at": "2026-11-06T16:00:48.499468Z",
@@ -1192,24 +1216,21 @@
   "changes": [],
   "health": {
     "backfill": {
-      "at": "2026-11-06T16:04:04.745637Z",
-      "interval_hours": 0.3021686598327425,
-      "attempted_trades": 5,
-      "complete_trades": 3,
-      "failed_trades": 2,
-      "backfilled_fills": 8,
+      "at": "2026-11-06T16:10:34.043278Z",
+      "interval_hours": 0.10777425958050622,
+      "attempted_trades": 4,
+      "complete_trades": 4,
+      "failed_trades": 0,
+      "backfilled_fills": 0,
       "late_exit_trades": [],
       "max_exit_lag_hours": 0
     },
-    "errors": [
-      "/markets/trades: HTTP Error 429: Too Many Requests",
-      "/markets/trades: HTTP Error 429: Too Many Requests"
-    ],
+    "errors": [],
     "data_gap": false,
     "market_count": 923,
-    "book_count": 15,
+    "book_count": 13,
     "requested_interval_minutes": 720,
-    "status": "degraded",
+    "status": "ok",
     "note": "12-hour snapshot collection with chronological resting-limit replay. Market stops/time exits require observed books; GitHub schedules may be delayed."
   },
   "candidates": [
@@ -1217,39 +1238,39 @@
       "horizon": "day",
       "strategy": "Threshold strangle",
       "event": "KXBTCD-26NOV0617",
-      "cost_per_pair": 0.37,
+      "cost_per_pair": 0.38,
       "legs": [
         {
           "ticker": "KXBTCD-26NOV0617-T74999.99",
           "side": "no",
           "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.2
+          "ask": 0.22
         },
         {
           "ticker": "KXBTCD-26NOV0617-T76499.99",
           "side": "yes",
           "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.17
+          "ask": 0.16
         }
       ]
     },
     {
       "horizon": "day",
       "strategy": "Threshold strangle",
-      "event": "KXBTCD-26NOV0612",
-      "cost_per_pair": 0.47,
+      "event": "KXNATGASW-26NOV0617",
+      "cost_per_pair": 0.12,
       "legs": [
         {
-          "ticker": "KXBTCD-26NOV0612-T75499.99",
+          "ticker": "KXNATGASW-26NOV0617-T2.899",
           "side": "no",
-          "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.37
+          "title": "Will the natural gas close price be above 2.899 USD/MMBtu on November 06, 2026 at 5:00 PM EST?",
+          "ask": 0.07
         },
         {
-          "ticker": "KXBTCD-26NOV0612-T76299.99",
+          "ticker": "KXNATGASW-26NOV0617-T3.099",
           "side": "yes",
-          "title": "Bitcoin price on Nov 6, 2026?",
-          "ask": 0.1
+          "title": "Will the natural gas close price be above 3.099 USD/MMBtu on November 06, 2026 at 5:00 PM EST?",
+          "ask": 0.05
         }
       ]
     },
@@ -1277,7 +1298,7 @@
       "horizon": "month",
       "strategy": "Threshold strangle",
       "event": "KXCPIYOY-26NOV",
-      "cost_per_pair": 0.43,
+      "cost_per_pair": 0.42,
       "legs": [
         {
           "ticker": "KXCPIYOY-26NOV-T3.5",
@@ -1289,7 +1310,7 @@
           "ticker": "KXCPIYOY-26NOV-T3.8",
           "side": "yes",
           "title": "Will the rate of CPI inflation be above 3.8% for the year ending in November 2026?",
-          "ask": 0.35
+          "ask": 0.34
         }
       ]
     },
@@ -1315,11 +1336,11 @@
     }
   ],
   "summary": {
-    "equity": 99973.9983,
+    "equity": 99974.4283,
     "cash": 99965.2226,
-    "net_pnl": -26.0017,
+    "net_pnl": -25.5717,
     "fees": 3.6174,
-    "drawdown": 0.0002600169999999343,
+    "drawdown": 0.0002557170000000042,
     "valuation_incomplete": false,
     "max_drawdown": 0.0002600169999999343,
     "closed": 2,
@@ -1331,8 +1352,8 @@
         "mode": "maker",
         "initial": 15000,
         "cash": 14987.6654,
-        "equity": 14989.2868,
-        "net_pnl": -10.7132,
+        "equity": 14989.5814,
+        "net_pnl": -10.4186,
         "realized": -10.9346,
         "fees": 0.9046,
         "closed": 1,
@@ -1354,8 +1375,8 @@
         "mode": "taker",
         "initial": 15000,
         "cash": 14984.5931,
-        "equity": 14986.5417,
-        "net_pnl": -13.4583,
+        "equity": 14986.6489,
+        "net_pnl": -13.3511,
         "realized": -13.464,
         "fees": 2.3469,
         "closed": 1,
@@ -1397,8 +1418,8 @@
         "mode": "taker",
         "initial": 15000,
         "cash": 14992.9641,
-        "equity": 14998.1698,
-        "net_pnl": -1.8302,
+        "equity": 14998.198,
+        "net_pnl": -1.802,
         "realized": 0.0,
         "fees": 0.3659,
         "closed": 0,
@@ -1581,12 +1602,12 @@
     ]
   },
   "backfill": {
-    "at": "2026-11-06T16:04:04.745637Z",
-    "interval_hours": 0.3021686598327425,
-    "attempted_trades": 5,
-    "complete_trades": 3,
-    "failed_trades": 2,
-    "backfilled_fills": 8,
+    "at": "2026-11-06T16:10:34.043278Z",
+    "interval_hours": 0.10777425958050622,
+    "attempted_trades": 4,
+    "complete_trades": 4,
+    "failed_trades": 0,
+    "backfilled_fills": 0,
     "late_exit_trades": [],
     "max_exit_lag_hours": 0
   },
@@ -1598,6 +1619,16 @@
       "complete_trades": 3,
       "failed_trades": 2,
       "backfilled_fills": 8,
+      "late_exit_trades": [],
+      "max_exit_lag_hours": 0
+    },
+    {
+      "at": "2026-11-06T16:10:34.043278Z",
+      "interval_hours": 0.10777425958050622,
+      "attempted_trades": 4,
+      "complete_trades": 4,
+      "failed_trades": 0,
+      "backfilled_fills": 0,
       "late_exit_trades": [],
       "max_exit_lag_hours": 0
     }
