@@ -1,5 +1,5 @@
 {
-  "version": "limit-replay-v2",
+  "version": "limit-replay-v3-8h",
   "initial_capital": 100000,
   "reserve": 10000,
   "bucket_capital": 15000,
@@ -13,7 +13,7 @@
   "max_spread": 0.08,
   "min_volume": 100,
   "trial_days": 30,
-  "poll_minutes": 720,
+  "poll_minutes": 480,
   "horizons": {
     "day": {
       "label": "Same day",
@@ -96,5 +96,8 @@
         ]
       }
     ]
-  }
+  },
+  "cadence_version": "cadence-8h-v1",
+  "cadence_changed_at": "2026-11-08T16:07:23.311192Z",
+  "cadence_review_completed_at": "2026-11-08T16:07:23.311192Z"
 }

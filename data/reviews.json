@@ -36,5 +36,83 @@
         "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm"
       ]
     }
+  },
+  {
+    "at": "2026-11-08T16:07:23.311192Z",
+    "type": "CADENCE REVIEW",
+    "title": "REDUCE TO 8H \u2014 late checks and overdue exits",
+    "decision": "REDUCE TO 8H",
+    "version": "limit-replay-v3-8h",
+    "summary": "Reduce scheduled collection from 12 to 8 hours. History replay recovered cleanly, but repeated scheduler delays and material overdue exit handling make 12-hour checking inadequate. This decision does not use profitability.",
+    "decisions": [
+      "REDUCE TO 8H: poll_minutes=480; cron 7 1,9,17 * * *. Prospective version limit-replay-v3-8h; existing entries and fills remain unchanged.",
+      "KEEP: $100,000 hypothetical portfolio, $2,000 combined-trade cap, loss history, current execution model, profit-target experiment and separate biweekly review.",
+      "LIMITATION: 8-hour polling cannot enforce a two-hour same-day exit or remove GitHub scheduler delays. Market stops and time exits still require observed executable books; no OHLC/print-only market fills.",
+      "MONITOR: distinguish late first exit attempts from residual liquidity/settlement delays; sparse trading is not a failed collector. No observed persistent/truncated history issue requires a collector-code change."
+    ],
+    "evidence": {
+      "window_start": "2026-11-06T16:00:48.499468Z",
+      "assessment_cutoff": "2026-11-08T16:05:00Z",
+      "last_persisted_observation": "2026-11-08T07:14:59.109108Z",
+      "persisted_checks": 7,
+      "history_trade_attempts": 28,
+      "history_trade_complete": 26,
+      "initial_429_failures": 2,
+      "failures_recovered_next_run": 2,
+      "subsequent_history_attempts_complete": "23/23",
+      "unresolved_history_failures": 0,
+      "archived_backfilled_fills_verified": 67,
+      "largest_archived_print_batch": 3602,
+      "observed_truncations": 0,
+      "unique_late_trades": 8,
+      "lag_hours_min": 2.238,
+      "lag_hours_max": 17.101,
+      "late_trade_ids": [
+        "T00003",
+        "T00004",
+        "T00008",
+        "T00010",
+        "T00013",
+        "T00014",
+        "T00015",
+        "T00016"
+      ],
+      "scheduled_runs": [
+        {
+          "id": 42349566563,
+          "nominal_slot": "2026-11-07T01:07:00Z",
+          "started": "2026-11-07T07:02:27Z",
+          "delay_minutes": 355.45
+        },
+        {
+          "id": 42399024126,
+          "nominal_slot": "2026-11-07T13:07:00Z",
+          "started": "2026-11-07T17:59:53Z",
+          "delay_minutes": 292.8833
+        },
+        {
+          "id": 42457986995,
+          "nominal_slot": "2026-11-08T01:07:00Z",
+          "started": "2026-11-08T07:14:42Z",
+          "delay_minutes": 367.7
+        }
+      ],
+      "schedule_attribution": "Nearest preceding configured UTC slot; run API does not provide an explicit original scheduled-for timestamp. All three source commit workflows used 7 1,13 * * *.",
+      "not_observed_slot_at_cutoff": "2026-11-08T13:07:00Z",
+      "longest_persisted_gap_hours": 14.7983,
+      "active_orders_at_last_observation": {
+        "open": 5,
+        "entering": 3,
+        "closing": 0
+      },
+      "residual_example": "T00013/T00014: first time-exit attempt ~8.96h overdue; one leg sold at observed bids, residual settled next run at 17.10h overdue. Do not attribute the entire delay to polling alone.",
+      "sources": [
+        "https://github.com/asre1212/kal/actions",
+        "https://github.com/asre1212/kal/tree/main/data/observations",
+        "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule",
+        "https://docs.kalshi.com/api-reference/market/get-trades",
+        "https://docs.kalshi.com/api-reference/market/get-market-orderbook"
+      ]
+    }
   }
 ]
