@@ -7,6 +7,7 @@ from zoneinfo import ZoneInfo
 from engine import *
 from review_stats import diagnostics
 from replay import replay_trade,arm_exits,cutoff
+from profit_study import initialize as init_profit_study, enroll as enroll_profit_study, advance as advance_profit_study, active_slices
 ROOT=Path(__file__).resolve().parents[1]
 BASE='https://external-api.kalshi.com/trade-api/v2'
 FIELDS=['ticker','event_ticker','title','yes_sub_title','close_time','expected_expiration_time','expiration_time','floor_strike','cap_strike','strike_type','yes_bid_dollars','yes_ask_dollars','no_bid_dollars','no_ask_dollars','volume_fp','result','settlement_value_dollars','status','rules_primary','rules_secondary','open_time']
@@ -217,12 +218,14 @@ def run():
     ERRORS.clear()
     now=time.time(); cfg=json.loads((ROOT/'data/config.json').read_text());path=ROOT/'data/state.json'
     state=json.loads(path.read_text()) if path.exists() else initial_state(now,cfg)
+    state['config']=cfg
+    init_profit_study(state,cfg,now)
     universe=[]
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         for ms in pool.map(lambda x:safe(series_markets,x),cfg['series']):universe+=ms or []
     # Retain settled/closed/open positions even when no longer listed as open.
     have={m['ticker'] for m in universe}
-    for t in state['trades']:
+    for t in state['trades']+active_slices(state):
         if t['status'] not in ['closed','cancelled']:
             for l in t['legs']:
                 if l['ticker'] not in have:
@@ -234,6 +237,7 @@ def run():
     for h in cfg['horizons']:selected+=sorted([c for c in cs if c['horizon']==h],key=lambda c:c['score'],reverse=True)[:2]
     needed={m['ticker'] for c in selected for m,_ in c['legs']}
     needed|={l['ticker'] for t in state['trades'] if t['status'] not in ['closed','cancelled'] for l in t['legs']}
+    needed|={l['ticker'] for t in active_slices(state) for l in t['legs']}
     books={}
     with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
         for ticker,b in zip(sorted(needed),pool.map(lambda x:safe(readbook,x),sorted(needed))):
@@ -241,6 +245,7 @@ def run():
     # Orders become active only after the source quotes were actually received.
     collection_started_at=iso(now);now=time.time()
     prints=process(state,books,universe,now,cfg)
+    prints.update(advance_profit_study(state,books,universe,now,cfg,prints_since,prints))
     now=time.time()  # New orders cannot predate completion of this historical retrieval.
     # Mark before permitting new risk; missing books never create optimistic gains.
     summary=summarize(state,cfg,books,now)
@@ -249,6 +254,10 @@ def run():
         for c in selected:
             for mode in ['taker','maker']:enter(state,c,mode,books,now,cfg)
     state['equity_history'].pop();summarize(state,cfg,books,now)
+    enroll_profit_study(state,cfg,now)
+    for t in active_slices(state):mark_trade(t,books)
+    from profit_study import refresh_summary
+    refresh_summary(state)
     state['runs']+=1;state['updated_at']=iso(now)
     state['health']={'backfill':state['backfill'],'errors':ERRORS,'data_gap':data_gap,'market_count':len(universe),'book_count':len(books),'requested_interval_minutes':cfg['poll_minutes'],'status':'degraded' if ERRORS else 'ok','note':f"{cfg['poll_minutes']/60:g}-hour snapshot collection with chronological resting-limit replay. Market stops/time exits require observed books; GitHub schedules may be delayed."}
     state['candidates']=[{'horizon':c['horizon'],'strategy':c['kind'],'event':c['event'],'cost_per_pair':round(c['indicative_cost'],4),'legs':[{'ticker':m['ticker'],'side':side,'title':m['title'],'ask':float(m[side+'_ask_dollars'])} for m,side in c['legs']]} for c in selected]

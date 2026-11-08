@@ -51,5 +51,50 @@
   "execution_model": "touch-volume-v2",
   "cadence_started_at": "2026-11-06T16:00:48.499468Z",
   "cadence_review_due_at": "2026-11-08T16:00:48.499468Z",
-  "fallback_poll_minutes": 480
+  "fallback_poll_minutes": 480,
+  "profit_study": {
+    "enabled": true,
+    "version": "profit-targets-v1",
+    "reference_policy": "p25",
+    "minimum_event_blocks": 20,
+    "bootstrap_draws": 2000,
+    "policies": [
+      {
+        "id": "p05",
+        "label": "+5%",
+        "targets": [
+          0.05
+        ]
+      },
+      {
+        "id": "p10",
+        "label": "+10%",
+        "targets": [
+          0.1
+        ]
+      },
+      {
+        "id": "p15",
+        "label": "+15%",
+        "targets": [
+          0.15
+        ]
+      },
+      {
+        "id": "p25",
+        "label": "+25%",
+        "targets": [
+          0.25
+        ]
+      },
+      {
+        "id": "scale",
+        "label": "Half +10% / half +25%",
+        "targets": [
+          0.1,
+          0.25
+        ]
+      }
+    ]
+  }
 }

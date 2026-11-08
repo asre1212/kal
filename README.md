@@ -32,6 +32,30 @@ After two days, review `collection_history` and workflow timing. The user author
 
 `limit-replay-v2` is the new entry version. Existing trades retain their entry version; later fills explicitly label the execution-model change. Market/stop/time exits are not backfilled without historical executable order-book evidence. Intraperiod drawdown remains unobserved, so reported maximum drawdown is sampled and may understate the true path.
 
+## Profit-taking experiment (`profit-targets-v1`)
+
+Prospectively compare **+5%, +10%, +15%, +25%**, and **half at +10% / half at +25%** using the exact same fully filled entry. Targets include allocated entry fees and modeled exit fees. This is a matched counterfactual study, not five additional portfolios: its P&L never enters the funded $100,000 ledger or its equity curve. Prior trades are not retrofitted. At least two contracts per leg are required; the first half rounds down and the second receives the remainder. Each policy retains the source cost cap of at most $2,000.
+
+Each tranche places a resting sale limit on each leg sufficient for **that leg alone to recover the entire tranche basket cost plus target profit**. This is deliberately conservative for two-leg trades; a 10% price rise in one leg does not mean 10% basket profit. Residual legs remain exposed until an observed bid exit. Fixed targets are never silently reduced; unattainable limits are flagged. All policies use resting profit exits, with the original maker/taker entry method retained as a filter. Entry opportunity selection still depends on the funded baseline; this is not a simulation of five independently reinvesting portfolios.
+
+Maximum intended holding times remain 2h / 72h / 7 days, or 30 minutes before close / trial end, with a 35% loss trigger. Each source/tranche within a policy shares the 5% volume and displayed-depth budget. Alternative policies use separate budgets because they are mutually exclusive hypotheses. Historical fills require later timestamped qualifying prints and complete history. Stops, time exits and residual sales need an observed book, so twelve-hour checks can miss the intended deadline. Settlement is a reported failure to exit early, not the objective. Alternative positions keep being monitored even after the funded source trade closes.
+
+The comparison table and chart use only entries completed under **every** policy. Separately show all-position marked P&L on identically priced source sets, unresolved exposure, gaps, late exits, target attainment and settlement fallbacks. This exposes completion bias; it does not eliminate it. Individual tranche limits, print IDs, fill times and source references remain in the full JSON export; comparison outcomes have a separate CSV export.
+
+| Quant diagnostic | Definition / limit |
+|---|---|
+| Net return / expectancy | Sum net P&L / sum entry outlay; average net P&L per matched completed trade |
+| Uncertainty | 2,000 paired event-cluster bootstrap draws; 95% percentile intervals for returns and differences versus +25%; minimum 20 event blocks |
+| Multiple comparisons | Event-cluster sign-flip tests, assuming symmetric exchangeable effects; Holm correction for four comparisons per horizon/entry-method stratum |
+| Win/loss | Win rate, descriptive Wilson interval, average win/loss, median return, profit factor (undefined when no losses) |
+| Downside / concentration | Worst return, empirical worst-5% mean after 20 events, effective event count `1 / sum(event outlay weights²)`, largest event weight |
+| Time / execution | Average/median/P90 holding hours, early exits, incomplete history, unachievable targets, settlement fallback and late exits |
+| Stress cases | Double all modeled fees; subtract an extra 1¢ per contract sold before settlement; accounting haircuts, not liquidity replays |
+
+Hypotheses are fixed during the initial experiment. Twenty events is a display threshold, not proof of adequacy. Event clustering does not remove correlation across markets or days; intervals are not simultaneous, and repeated reviews/12 strata remain exploratory. Do not select a winner from p-values alone. Any tuned target requires a new prospective validation phase; no look-ahead optimization, annualized Sharpe on this short trial, or Kelly sizing without calibrated probabilities. Scripts `profit_study.py` and `profit_stats.py` produce the persisted results in `state.profit_study`; the regular collector runs them automatically.
+
+The replay allocator now reserves only each order's remaining quantity from a print. This allows split tranches to use leftover qualifying volume while retaining the shared 5% cap. Existing fills and losses are preserved.
+
 ## Two-week reviews
 
 Reviews are stored in `data/reviews.json` and appear in Research & reviews. They assess realized and marked P&L, expectancy, returns on entry outlay, drawdown, fee drag, duration, fill rates, partial/unpaired exposure, data gaps and concentration. Win-rate Wilson intervals are descriptive; the review module provides 2,000 event-cluster bootstrap resamples only after 20 event blocks. Serial/cross-event correlation and repeated comparisons still need review; do not optimize rules on tiny samples or apply Kelly without a validated probability model.
@@ -63,3 +87,8 @@ Run locally: `python -m unittest discover -s tests -v`, `python scripts/collect.
 6. https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule
 
 Reviewed November 6, 2026. Verify live rules/fees when making material strategy changes.
+
+Statistical references checked for the profit-target experiment (November 2026):
+- Efron (1979), *Bootstrap Methods: Another Look at the Jackknife*: https://www.math.ntu.edu.tw/~hchen/teaching/LargeSample/references/Efron79.pdf
+- Holm (1979), *A Simple Sequentially Rejective Multiple Test Procedure*: https://www.ime.usp.br/~abe/lista/pdf4R8xPVzCnX.pdf
+- NIST, Wilson proportion confidence intervals: https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm

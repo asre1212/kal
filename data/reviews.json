@@ -11,5 +11,30 @@
       "REVIEW IN TWO DAYS: reduce to 8-hour checks if the slower cadence causes incomplete history, stale checks, or material exit delays. Do not judge cadence from two days of profits."
     ],
     "version": "limit-replay-v2"
+  },
+  {
+    "at": "2026-11-08T02:06:55.886848Z",
+    "type": "PROSPECTIVE EXPERIMENT",
+    "title": "Profit targets, partial exits and paired quant analysis",
+    "version": "profit-targets-v1",
+    "summary": "Register five matched-entry exit policies: +5%, +10%, +15%, +25%, and half +10% / half +25%. Early exit remains the objective; no new performance winner is claimed. Counterfactual results stay separate from funded portfolio accounting.",
+    "decisions": [
+      "KEEP: $100k total, $2k maximum full-trade entry outlay, source entries and all recorded history; keep current 12-hour collection and scheduled two-day cadence review.",
+      "TEST: only new fully filled entries with at least two contracts per leg; share entry cost/fees and hold/loss rules across all exit policies. Model fixed whole-tranche cost-recovery limits, flag unreachable targets and track residual exposure.",
+      "ASSESS: common completed entries plus all-position marks; stratify by contract horizon and entry method. Include net expectancy, event-cluster bootstrap intervals, Holm-adjusted paired tests, fee/slippage stress, concentration, worst-tail loss and holding durations.",
+      "DO NOT PROMOTE YET: minimum event counts do not establish a tradable edge. Freeze targets for the trial, assess completion/missing-data bias, and validate any future change prospectively.",
+      "AUDIT: shared print-volume allocation now leaves unused capacity available to later tranches while retaining the 5% participation cap. Never rewrite earlier fills."
+    ],
+    "evidence": {
+      "performance_conclusion": "No forward target-comparison observations yet at registration.",
+      "references": [
+        "https://docs.kalshi.com/api-reference/market/get-trades",
+        "https://kalshi.com/docs/kalshi-fee-schedule.pdf",
+        "https://docs.kalshi.com/api-reference/market/get-market-orderbook",
+        "https://www.math.ntu.edu.tw/~hchen/teaching/LargeSample/references/Efron79.pdf",
+        "https://www.ime.usp.br/~abe/lista/pdf4R8xPVzCnX.pdf",
+        "https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm"
+      ]
+    }
   }
 ]

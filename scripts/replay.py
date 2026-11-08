@@ -10,7 +10,8 @@ def arm_exits(state,t,cfg,at):
     """Contingent limits defined by the existing target formula, activated after entry."""
     if t['mode']!='maker' or t['status']!='open':return
     maximum=max(0,(t['quantity']-t['cost'])/max(t['cost'],.0001))
-    t['target_ratio']=min(cfg['profit_target'],maximum*.5)
+    # Explicit counterfactual targets are never silently clipped to another tier.
+    t['target_ratio']=t.get('exit_target_ratio',min(cfg['profit_target'],maximum*.5))
     t['target_profit']=money(t['cost']*t['target_ratio'])
     if at>=cutoff(state,t,cfg):return
     for l in t['legs']:
@@ -19,6 +20,7 @@ def arm_exits(state,t,cfg,at):
         target=t['cost']+t['target_profit']
         price=next((i/100 for i in range(1,100) if i/100*t['quantity']-fee(i/100,t['quantity'],'maker',l.get('fee_multiplier',1),l.get('maker_enabled',False))>=target),None)
         if price is not None:l['sell_order']={'action':'sell','side':l['side'],'limit':price,'after':iso(at),'activated_at':iso(at),'participation':cfg['participation'],'filled':0,'eligible_volume':0,'model':'touch-volume-v2'}
+        elif 'exit_target_ratio' in t:l['target_unreachable']=True
 
 def replay_trade(state,t,history,now,cfg,volume_used):
     """History must be complete for every leg. Recorded orders only; no retrospective entries."""
@@ -46,7 +48,10 @@ def replay_trade(state,t,history,now,cfg,volume_used):
         if not eligible:continue
         # Each public print can support at most the participation share across all paper orders.
         key=(l['ticker'],p['trade_id']);available=max(0,float(p['count_fp'])*cfg['participation']-volume_used.get(key,0))
-        order['credit']=order.get('credit',0)+available;volume_used[key]=volume_used.get(key,0)+available
+        # Reserve only this order's remaining need, allowing another tranche/order
+        # to use the rest of the same print without exceeding the shared 5% cap.
+        allocated=min(available,max(0,remaining-order.get('credit',0)))
+        order['credit']=order.get('credit',0)+allocated;volume_used[key]=volume_used.get(key,0)+allocated
         q=min(remaining,math.floor(order['credit']+1e-9))
         if action=='buy':
             while q and (t['cost']+order['limit']*q+fee(order['limit'],q,'maker',l.get('fee_multiplier',1),l.get('maker_enabled',False))>t['cost_cap']+1e-6 or order['limit']*q+fee(order['limit'],q,'maker',l.get('fee_multiplier',1),l.get('maker_enabled',False))>state['buckets'][t['bucket']]['cash']):q-=1
