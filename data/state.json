@@ -2,7 +2,7 @@
   "schema": 1,
   "started_at": "2026-11-06T15:29:05.429626Z",
   "trial_end": "2026-12-06T15:29:05.429626Z",
-  "updated_at": "2026-11-08T16:08:10.612680Z",
+  "updated_at": "2026-11-08T21:02:04.971262Z",
   "buckets": {
     "day_maker": {
       "horizon": "day",
@@ -14,7 +14,7 @@
       "horizon": "day",
       "mode": "taker",
       "initial": 15000,
-      "cash": 14970.551
+      "cash": 14966.4052
     },
     "month_maker": {
       "horizon": "month",
@@ -725,7 +725,7 @@
           "close_time": "2026-12-10T13:29:00Z",
           "decision_time": "2026-12-10T15:00:00Z",
           "rules": "If the Consumer Price Index (CPI) increases by more than 3.8% in the twelve months ending November 2026 (as represented by the one-decimal place value reported by the Bureau of Labor Statistics), then the market resolves to Yes.",
-          "mark": 1.0022,
+          "mark": 0.9435,
           "unpriced": false
         }
       ],
@@ -753,8 +753,8 @@
           "reason": "Entry at observed ask; capped at 5% displayed top-level size"
         }
       ],
-      "pnl": -0.1498,
-      "mark": 1.1422,
+      "pnl": -0.2085,
+      "mark": 1.0835,
       "entry_deadline": "2026-11-07T15:43:57.675016Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
@@ -1645,7 +1645,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.29,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "participation": 0.05,
             "credit": 4.005
           },
@@ -1653,7 +1653,7 @@
             "action": "sell",
             "side": "yes",
             "limit": 0.95,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "activated_at": "2026-11-06T18:09:11.150209Z",
             "participation": 0.05,
             "filled": 0,
@@ -1680,7 +1680,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.6,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "participation": 0.05,
             "credit": 0.09000000000000008
           },
@@ -1688,7 +1688,7 @@
             "action": "sell",
             "side": "no",
             "limit": 0.95,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "activated_at": "2026-11-06T18:09:11.150209Z",
             "participation": 0.05,
             "filled": 0,
@@ -1736,7 +1736,7 @@
       "entry_deadline": "2026-11-07T16:14:52.110664Z",
       "target_ratio": 0.061797752808988755,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
-      "replay_after": "2026-11-08T16:08:08.602553Z",
+      "replay_after": "2026-11-08T21:02:03.462849Z",
       "execution_model": "touch-volume-v2",
       "unpriced": false,
       "depth_shortfall": false,
@@ -2843,7 +2843,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.19,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "participation": 0.05,
             "credit": 0
           },
@@ -2867,7 +2867,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.15,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "participation": 0.05
           }
         }
@@ -2894,7 +2894,7 @@
       "entry_deadline": "2026-11-09T02:08:55.855554Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
-      "replay_after": "2026-11-08T16:08:08.602553Z",
+      "replay_after": "2026-11-08T21:02:03.462849Z",
       "execution_model": "touch-volume-v2",
       "unpriced": false,
       "depth_shortfall": false,
@@ -3220,7 +3220,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.23,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "participation": 0.05
           }
         },
@@ -3241,7 +3241,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.01,
-            "after": "2026-11-08T16:08:08.602553Z",
+            "after": "2026-11-08T21:02:03.462849Z",
             "participation": 0.05
           }
         }
@@ -3252,11 +3252,120 @@
       "entry_deadline": "2026-11-09T07:14:59.109108Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
-      "replay_after": "2026-11-08T16:08:08.602553Z",
+      "replay_after": "2026-11-08T21:02:03.462849Z",
       "execution_model": "touch-volume-v2",
       "unpriced": false,
       "depth_shortfall": false,
       "backfill_status": "complete"
+    },
+    {
+      "id": "T00021",
+      "bucket": "day_taker",
+      "horizon": "day",
+      "mode": "taker",
+      "strategy": "Outside central range",
+      "event": "KXBTC-26NOV0817",
+      "version": "limit-replay-v3-8h",
+      "created_at": "2026-11-08T21:02:04.971262Z",
+      "opened_at": "2026-11-08T21:02:04.971262Z",
+      "status": "open",
+      "quantity": 12,
+      "cost": 4.1458,
+      "proceeds": 0,
+      "fees": 0.1858,
+      "cost_cap": 2000,
+      "reserved": 0,
+      "legs": [
+        {
+          "ticker": "KXBTC-26NOV0817-B75625",
+          "title": "Bitcoin price range on Nov 8, 2026?",
+          "subtitle": "$75,500 to 75,749.99",
+          "side": "no",
+          "limit": 0.33,
+          "bought": 12,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2026-11-08T22:00:00Z",
+          "decision_time": "2026-11-08T22:05:00Z",
+          "rules": "If the simple average of the sixty seconds of CF Benchmarks' Bitcoin Real-Time Index (BRTI) before 5 PM EST is between 75500-75749.99 at 5 PM EST on Nov 8, 2026, then the market resolves to Yes.",
+          "mark": 3.6572,
+          "unpriced": false
+        }
+      ],
+      "fills": [
+        {
+          "at": "2026-11-08T21:02:04.971262Z",
+          "ticker": "KXBTC-26NOV0817-B75625",
+          "side": "no",
+          "action": "buy",
+          "price": 0.33,
+          "quantity": 12,
+          "fee": 0.1858,
+          "mode": "taker",
+          "reason": "Entry at observed ask; capped at 5% displayed top-level size"
+        }
+      ],
+      "pnl": -0.4886,
+      "mark": 3.6572,
+      "entry_deadline": "2026-11-08T22:02:04.971262Z",
+      "target_ratio": 0.25,
+      "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
+      "replay_after": "2026-11-08T21:02:04.971262Z",
+      "execution_model": "book-snapshot-v1",
+      "unpriced": false,
+      "depth_shortfall": false
+    },
+    {
+      "id": "T00022",
+      "bucket": "day_maker",
+      "horizon": "day",
+      "mode": "maker",
+      "strategy": "Outside central range",
+      "event": "KXBTC-26NOV0817",
+      "version": "limit-replay-v3-8h",
+      "created_at": "2026-11-08T21:02:04.971262Z",
+      "opened_at": "2026-11-08T21:02:04.971262Z",
+      "status": "entering",
+      "quantity": 12,
+      "cost": 0,
+      "proceeds": 0,
+      "fees": 0,
+      "cost_cap": 2000,
+      "reserved": 3.84,
+      "legs": [
+        {
+          "ticker": "KXBTC-26NOV0817-B75625",
+          "title": "Bitcoin price range on Nov 8, 2026?",
+          "subtitle": "$75,500 to 75,749.99",
+          "side": "no",
+          "limit": 0.32,
+          "bought": 0,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2026-11-08T22:00:00Z",
+          "decision_time": "2026-11-08T22:05:00Z",
+          "rules": "If the simple average of the sixty seconds of CF Benchmarks' Bitcoin Real-Time Index (BRTI) before 5 PM EST is between 75500-75749.99 at 5 PM EST on Nov 8, 2026, then the market resolves to Yes.",
+          "buy_order": {
+            "action": "buy",
+            "side": "no",
+            "limit": 0.32,
+            "after": "2026-11-08T21:02:04.971262Z",
+            "participation": 0.05
+          }
+        }
+      ],
+      "fills": [],
+      "pnl": 0.0,
+      "mark": 0.0,
+      "entry_deadline": "2026-11-08T22:02:04.971262Z",
+      "target_ratio": 0.25,
+      "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
+      "replay_after": "2026-11-08T21:02:04.971262Z",
+      "execution_model": "touch-volume-v2",
+      "unpriced": false,
+      "depth_shortfall": false
     }
   ],
   "equity_history": [
@@ -3464,9 +3573,25 @@
         "long_maker": 14999.938,
         "long_taker": 14999.8763
       }
+    },
+    {
+      "at": "2026-11-08T21:02:04.971262Z",
+      "equity": 99978.3158,
+      "cash": 99969.6978,
+      "fees": 25.3222,
+      "drawdown": 0.0002168420000000333,
+      "valuation_incomplete": false,
+      "buckets": {
+        "day_maker": 15011.3059,
+        "day_taker": 14970.0624,
+        "month_maker": 14999.3699,
+        "month_taker": 14997.7633,
+        "long_maker": 14999.938,
+        "long_taker": 14999.8763
+      }
     }
   ],
-  "runs": 12,
+  "runs": 13,
   "reviews": [
     {
       "at": "2026-11-06T16:00:48.499468Z",
@@ -3588,22 +3713,19 @@
   "changes": [],
   "health": {
     "backfill": {
-      "at": "2026-11-08T16:08:08.602553Z",
-      "interval_hours": 8.885970401300325,
-      "attempted_trades": 4,
-      "complete_trades": 4,
+      "at": "2026-11-08T21:02:03.462849Z",
+      "interval_hours": 4.898013935950067,
+      "attempted_trades": 3,
+      "complete_trades": 3,
       "failed_trades": 0,
-      "backfilled_fills": 5,
-      "late_exit_trades": [
-        "T00018",
-        "T00019"
-      ],
-      "max_exit_lag_hours": 7.885970401300324
+      "backfilled_fills": 0,
+      "late_exit_trades": [],
+      "max_exit_lag_hours": 0
     },
     "errors": [],
     "data_gap": false,
-    "market_count": 1083,
-    "book_count": 14,
+    "market_count": 867,
+    "book_count": 13,
     "requested_interval_minutes": 480,
     "status": "ok",
     "note": "8-hour snapshot collection with chronological resting-limit replay. Market stops/time exits require observed books; GitHub schedules may be delayed."
@@ -3613,19 +3735,33 @@
       "horizon": "day",
       "strategy": "Threshold strangle",
       "event": "KXBTCD-26NOV0817",
-      "cost_per_pair": 0.5,
+      "cost_per_pair": 0.34,
       "legs": [
         {
-          "ticker": "KXBTCD-26NOV0817-T75749.99",
+          "ticker": "KXBTCD-26NOV0817-T75499.99",
           "side": "no",
           "title": "Bitcoin price on Nov 8, 2026?",
-          "ask": 0.27
+          "ask": 0.12
         },
         {
-          "ticker": "KXBTCD-26NOV0817-T76249.99",
+          "ticker": "KXBTCD-26NOV0817-T75749.99",
           "side": "yes",
           "title": "Bitcoin price on Nov 8, 2026?",
-          "ask": 0.23
+          "ask": 0.22
+        }
+      ]
+    },
+    {
+      "horizon": "day",
+      "strategy": "Outside central range",
+      "event": "KXBTC-26NOV0817",
+      "cost_per_pair": 0.33,
+      "legs": [
+        {
+          "ticker": "KXBTC-26NOV0817-B75625",
+          "side": "no",
+          "title": "Bitcoin price range on Nov 8, 2026?",
+          "ask": 0.33
         }
       ]
     },
@@ -3679,27 +3815,27 @@
           "ticker": "KXIMPEACH-27-JUL01",
           "side": "yes",
           "title": "Will the President be impeached before Jul 1, 2027?",
-          "ask": 0.38
+          "ask": 0.37
         },
         {
           "ticker": "KXIMPEACH-27-OCT01",
           "side": "no",
           "title": "Will the President be impeached before Oct 1, 2027?",
-          "ask": 0.49
+          "ask": 0.5
         }
       ]
     }
   ],
   "summary": {
-    "equity": 99978.8631,
-    "cash": 99973.8436,
-    "net_pnl": -21.1369,
-    "fees": 25.1364,
-    "drawdown": 0.00021136900000012248,
+    "equity": 99978.3158,
+    "cash": 99969.6978,
+    "net_pnl": -21.6842,
+    "fees": 25.3222,
+    "drawdown": 0.0002168420000000333,
     "valuation_incomplete": false,
     "max_drawdown": 0.0003418959999999788,
     "closed": 13,
-    "open": 6,
+    "open": 8,
     "buckets": [
       {
         "id": "day_maker",
@@ -3719,8 +3855,8 @@
           0.8823817688407467
         ],
         "expectancy": 2.2612,
-        "open": 0,
-        "submitted": 5,
+        "open": 1,
+        "submitted": 6,
         "entered": 5,
         "avg_hold": 11.018
       },
@@ -3729,11 +3865,11 @@
         "horizon": "day",
         "mode": "taker",
         "initial": 15000,
-        "cash": 14970.551,
-        "equity": 14970.551,
-        "net_pnl": -29.449,
+        "cash": 14966.4052,
+        "equity": 14970.0624,
+        "net_pnl": -29.9376,
         "realized": -29.449,
-        "fees": 19.879,
+        "fees": 20.0648,
         "closed": 5,
         "wins": 2,
         "win_rate": 0.4,
@@ -3742,9 +3878,9 @@
           0.769280067791163
         ],
         "expectancy": -5.8898,
-        "open": 0,
-        "submitted": 5,
-        "entered": 5,
+        "open": 1,
+        "submitted": 6,
+        "entered": 6,
         "avg_hold": 11.018
       },
       {
@@ -3776,8 +3912,8 @@
         "mode": "taker",
         "initial": 15000,
         "cash": 14994.6377,
-        "equity": 14997.822,
-        "net_pnl": -2.178,
+        "equity": 14997.7633,
+        "net_pnl": -2.2367,
         "realized": -1.6963,
         "fees": 0.4723,
         "closed": 1,
@@ -3965,6 +4101,17 @@
         "evidence": "insufficient independent events"
       },
       {
+        "bucket": "day_maker",
+        "version": "limit-replay-v3-8h",
+        "closed": 0,
+        "event_blocks": 0,
+        "net_return_on_outlay": null,
+        "return_ci": null,
+        "profit_factor": null,
+        "worst_tail_mean": null,
+        "evidence": "insufficient independent events"
+      },
+      {
         "bucket": "day_taker",
         "version": "baseline-v1",
         "closed": 2,
@@ -3983,6 +4130,17 @@
         "net_return_on_outlay": -0.08947316735322544,
         "return_ci": null,
         "profit_factor": 0.306190040698543,
+        "worst_tail_mean": null,
+        "evidence": "insufficient independent events"
+      },
+      {
+        "bucket": "day_taker",
+        "version": "limit-replay-v3-8h",
+        "closed": 0,
+        "event_blocks": 0,
+        "net_return_on_outlay": null,
+        "return_ci": null,
+        "profit_factor": null,
         "worst_tail_mean": null,
         "evidence": "insufficient independent events"
       },
@@ -4044,17 +4202,14 @@
     ]
   },
   "backfill": {
-    "at": "2026-11-08T16:08:08.602553Z",
-    "interval_hours": 8.885970401300325,
-    "attempted_trades": 4,
-    "complete_trades": 4,
+    "at": "2026-11-08T21:02:03.462849Z",
+    "interval_hours": 4.898013935950067,
+    "attempted_trades": 3,
+    "complete_trades": 3,
     "failed_trades": 0,
-    "backfilled_fills": 5,
-    "late_exit_trades": [
-      "T00018",
-      "T00019"
-    ],
-    "max_exit_lag_hours": 7.885970401300324
+    "backfilled_fills": 0,
+    "late_exit_trades": [],
+    "max_exit_lag_hours": 0
   },
   "collection_history": [
     {
@@ -4152,6 +4307,16 @@
         "T00019"
       ],
       "max_exit_lag_hours": 7.885970401300324
+    },
+    {
+      "at": "2026-11-08T21:02:03.462849Z",
+      "interval_hours": 4.898013935950067,
+      "attempted_trades": 3,
+      "complete_trades": 3,
+      "failed_trades": 0,
+      "backfilled_fills": 0,
+      "late_exit_trades": [],
+      "max_exit_lag_hours": 0
     }
   ],
   "profit_study": {
@@ -4904,11 +5069,359 @@
             ]
           }
         ]
+      },
+      {
+        "event": "KXBTC-26NOV0817",
+        "horizon": "day",
+        "mode": "taker",
+        "quantity": 12,
+        "cost": 4.1458,
+        "source_id": "T00021",
+        "entered_at": "2026-11-08T21:02:04.971262Z",
+        "variants": [
+          {
+            "policy": "p05",
+            "slices": [
+              {
+                "id": "T00021:p05:0",
+                "bucket": "study",
+                "horizon": "day",
+                "mode": "maker",
+                "entry_mode": "taker",
+                "version": "profit-targets-v1",
+                "status": "open",
+                "quantity": 12,
+                "cost": 4.1458,
+                "proceeds": 0,
+                "fees": 0.1858,
+                "entry_fees": 0.1858,
+                "cost_cap": 2000,
+                "opened_at": "2026-11-08T21:02:04.971262Z",
+                "entry_completed_at": "2026-11-08T21:02:04.971262Z",
+                "replay_after": "2026-11-08T21:02:04.971262Z",
+                "exit_target_ratio": 0.05,
+                "fills": [],
+                "legs": [
+                  {
+                    "ticker": "KXBTC-26NOV0817-B75625",
+                    "side": "no",
+                    "close_time": "2026-11-08T22:00:00Z",
+                    "decision_time": "2026-11-08T22:05:00Z",
+                    "fee_multiplier": 1.0,
+                    "maker_enabled": false,
+                    "bought": 12,
+                    "sold": 0,
+                    "sell_order": {
+                      "action": "sell",
+                      "side": "no",
+                      "limit": 0.37,
+                      "after": "2026-11-08T21:02:04.971262Z",
+                      "activated_at": "2026-11-08T21:02:04.971262Z",
+                      "participation": 0.05,
+                      "filled": 0,
+                      "eligible_volume": 0,
+                      "model": "touch-volume-v2"
+                    },
+                    "mark": 3.6572,
+                    "unpriced": false
+                  }
+                ],
+                "mark": 3.6572,
+                "pnl": -0.4886,
+                "reserved": 0,
+                "target_ratio": 0.05,
+                "target_profit": 0.2073,
+                "unpriced": false,
+                "depth_shortfall": false
+              }
+            ]
+          },
+          {
+            "policy": "p10",
+            "slices": [
+              {
+                "id": "T00021:p10:0",
+                "bucket": "study",
+                "horizon": "day",
+                "mode": "maker",
+                "entry_mode": "taker",
+                "version": "profit-targets-v1",
+                "status": "open",
+                "quantity": 12,
+                "cost": 4.1458,
+                "proceeds": 0,
+                "fees": 0.1858,
+                "entry_fees": 0.1858,
+                "cost_cap": 2000,
+                "opened_at": "2026-11-08T21:02:04.971262Z",
+                "entry_completed_at": "2026-11-08T21:02:04.971262Z",
+                "replay_after": "2026-11-08T21:02:04.971262Z",
+                "exit_target_ratio": 0.1,
+                "fills": [],
+                "legs": [
+                  {
+                    "ticker": "KXBTC-26NOV0817-B75625",
+                    "side": "no",
+                    "close_time": "2026-11-08T22:00:00Z",
+                    "decision_time": "2026-11-08T22:05:00Z",
+                    "fee_multiplier": 1.0,
+                    "maker_enabled": false,
+                    "bought": 12,
+                    "sold": 0,
+                    "sell_order": {
+                      "action": "sell",
+                      "side": "no",
+                      "limit": 0.39,
+                      "after": "2026-11-08T21:02:04.971262Z",
+                      "activated_at": "2026-11-08T21:02:04.971262Z",
+                      "participation": 0.05,
+                      "filled": 0,
+                      "eligible_volume": 0,
+                      "model": "touch-volume-v2"
+                    },
+                    "mark": 3.6572,
+                    "unpriced": false
+                  }
+                ],
+                "mark": 3.6572,
+                "pnl": -0.4886,
+                "reserved": 0,
+                "target_ratio": 0.1,
+                "target_profit": 0.4146,
+                "unpriced": false,
+                "depth_shortfall": false
+              }
+            ]
+          },
+          {
+            "policy": "p15",
+            "slices": [
+              {
+                "id": "T00021:p15:0",
+                "bucket": "study",
+                "horizon": "day",
+                "mode": "maker",
+                "entry_mode": "taker",
+                "version": "profit-targets-v1",
+                "status": "open",
+                "quantity": 12,
+                "cost": 4.1458,
+                "proceeds": 0,
+                "fees": 0.1858,
+                "entry_fees": 0.1858,
+                "cost_cap": 2000,
+                "opened_at": "2026-11-08T21:02:04.971262Z",
+                "entry_completed_at": "2026-11-08T21:02:04.971262Z",
+                "replay_after": "2026-11-08T21:02:04.971262Z",
+                "exit_target_ratio": 0.15,
+                "fills": [],
+                "legs": [
+                  {
+                    "ticker": "KXBTC-26NOV0817-B75625",
+                    "side": "no",
+                    "close_time": "2026-11-08T22:00:00Z",
+                    "decision_time": "2026-11-08T22:05:00Z",
+                    "fee_multiplier": 1.0,
+                    "maker_enabled": false,
+                    "bought": 12,
+                    "sold": 0,
+                    "sell_order": {
+                      "action": "sell",
+                      "side": "no",
+                      "limit": 0.4,
+                      "after": "2026-11-08T21:02:04.971262Z",
+                      "activated_at": "2026-11-08T21:02:04.971262Z",
+                      "participation": 0.05,
+                      "filled": 0,
+                      "eligible_volume": 0,
+                      "model": "touch-volume-v2"
+                    },
+                    "mark": 3.6572,
+                    "unpriced": false
+                  }
+                ],
+                "mark": 3.6572,
+                "pnl": -0.4886,
+                "reserved": 0,
+                "target_ratio": 0.15,
+                "target_profit": 0.6219,
+                "unpriced": false,
+                "depth_shortfall": false
+              }
+            ]
+          },
+          {
+            "policy": "p25",
+            "slices": [
+              {
+                "id": "T00021:p25:0",
+                "bucket": "study",
+                "horizon": "day",
+                "mode": "maker",
+                "entry_mode": "taker",
+                "version": "profit-targets-v1",
+                "status": "open",
+                "quantity": 12,
+                "cost": 4.1458,
+                "proceeds": 0,
+                "fees": 0.1858,
+                "entry_fees": 0.1858,
+                "cost_cap": 2000,
+                "opened_at": "2026-11-08T21:02:04.971262Z",
+                "entry_completed_at": "2026-11-08T21:02:04.971262Z",
+                "replay_after": "2026-11-08T21:02:04.971262Z",
+                "exit_target_ratio": 0.25,
+                "fills": [],
+                "legs": [
+                  {
+                    "ticker": "KXBTC-26NOV0817-B75625",
+                    "side": "no",
+                    "close_time": "2026-11-08T22:00:00Z",
+                    "decision_time": "2026-11-08T22:05:00Z",
+                    "fee_multiplier": 1.0,
+                    "maker_enabled": false,
+                    "bought": 12,
+                    "sold": 0,
+                    "sell_order": {
+                      "action": "sell",
+                      "side": "no",
+                      "limit": 0.44,
+                      "after": "2026-11-08T21:02:04.971262Z",
+                      "activated_at": "2026-11-08T21:02:04.971262Z",
+                      "participation": 0.05,
+                      "filled": 0,
+                      "eligible_volume": 0,
+                      "model": "touch-volume-v2"
+                    },
+                    "mark": 3.6572,
+                    "unpriced": false
+                  }
+                ],
+                "mark": 3.6572,
+                "pnl": -0.4886,
+                "reserved": 0,
+                "target_ratio": 0.25,
+                "target_profit": 1.0364,
+                "unpriced": false,
+                "depth_shortfall": false
+              }
+            ]
+          },
+          {
+            "policy": "scale",
+            "slices": [
+              {
+                "id": "T00021:scale:0",
+                "bucket": "study",
+                "horizon": "day",
+                "mode": "maker",
+                "entry_mode": "taker",
+                "version": "profit-targets-v1",
+                "status": "open",
+                "quantity": 6,
+                "cost": 2.0729,
+                "proceeds": 0,
+                "fees": 0.0929,
+                "entry_fees": 0.0929,
+                "cost_cap": 2000,
+                "opened_at": "2026-11-08T21:02:04.971262Z",
+                "entry_completed_at": "2026-11-08T21:02:04.971262Z",
+                "replay_after": "2026-11-08T21:02:04.971262Z",
+                "exit_target_ratio": 0.1,
+                "fills": [],
+                "legs": [
+                  {
+                    "ticker": "KXBTC-26NOV0817-B75625",
+                    "side": "no",
+                    "close_time": "2026-11-08T22:00:00Z",
+                    "decision_time": "2026-11-08T22:05:00Z",
+                    "fee_multiplier": 1.0,
+                    "maker_enabled": false,
+                    "bought": 6,
+                    "sold": 0,
+                    "sell_order": {
+                      "action": "sell",
+                      "side": "no",
+                      "limit": 0.39,
+                      "after": "2026-11-08T21:02:04.971262Z",
+                      "activated_at": "2026-11-08T21:02:04.971262Z",
+                      "participation": 0.05,
+                      "filled": 0,
+                      "eligible_volume": 0,
+                      "model": "touch-volume-v2"
+                    },
+                    "mark": 1.8286,
+                    "unpriced": false
+                  }
+                ],
+                "mark": 1.8286,
+                "pnl": -0.2443,
+                "reserved": 0,
+                "target_ratio": 0.1,
+                "target_profit": 0.2073,
+                "unpriced": false,
+                "depth_shortfall": false
+              },
+              {
+                "id": "T00021:scale:1",
+                "bucket": "study",
+                "horizon": "day",
+                "mode": "maker",
+                "entry_mode": "taker",
+                "version": "profit-targets-v1",
+                "status": "open",
+                "quantity": 6,
+                "cost": 2.0729,
+                "proceeds": 0,
+                "fees": 0.0929,
+                "entry_fees": 0.0929,
+                "cost_cap": 2000,
+                "opened_at": "2026-11-08T21:02:04.971262Z",
+                "entry_completed_at": "2026-11-08T21:02:04.971262Z",
+                "replay_after": "2026-11-08T21:02:04.971262Z",
+                "exit_target_ratio": 0.25,
+                "fills": [],
+                "legs": [
+                  {
+                    "ticker": "KXBTC-26NOV0817-B75625",
+                    "side": "no",
+                    "close_time": "2026-11-08T22:00:00Z",
+                    "decision_time": "2026-11-08T22:05:00Z",
+                    "fee_multiplier": 1.0,
+                    "maker_enabled": false,
+                    "bought": 6,
+                    "sold": 0,
+                    "sell_order": {
+                      "action": "sell",
+                      "side": "no",
+                      "limit": 0.44,
+                      "after": "2026-11-08T21:02:04.971262Z",
+                      "activated_at": "2026-11-08T21:02:04.971262Z",
+                      "participation": 0.05,
+                      "filled": 0,
+                      "eligible_volume": 0,
+                      "model": "touch-volume-v2"
+                    },
+                    "mark": 1.8286,
+                    "unpriced": false
+                  }
+                ],
+                "mark": 1.8286,
+                "pnl": -0.2443,
+                "reserved": 0,
+                "target_ratio": 0.25,
+                "target_profit": 0.5182,
+                "unpriced": false,
+                "depth_shortfall": false
+              }
+            ]
+          }
+        ]
       }
     ],
     "excluded": [],
     "health": {
-      "at": "2026-11-08T16:08:08.602553Z",
+      "at": "2026-11-08T21:02:03.462849Z",
       "failed_histories": [],
       "blocked_slices": 0
     },
@@ -5033,6 +5546,126 @@
         "target_recovered_tranches": 0,
         "tranches": 2,
         "nonsettlement_sold": 450
+      },
+      {
+        "source_id": "T00021",
+        "policy": "p05",
+        "event": "KXBTC-26NOV0817",
+        "horizon": "day",
+        "entry_mode": "taker",
+        "cost": 4.1458,
+        "fees": 0.1858,
+        "proceeds": 0.0,
+        "mark": 3.6572,
+        "net_pnl": -0.4886,
+        "closed": false,
+        "closed_at": null,
+        "hold_hours": null,
+        "early_exit": false,
+        "settlement_fallback": false,
+        "late_exit": false,
+        "unreachable": false,
+        "valuation_incomplete": false,
+        "history_incomplete": false,
+        "target_recovered_tranches": 0,
+        "tranches": 1,
+        "nonsettlement_sold": 0
+      },
+      {
+        "source_id": "T00021",
+        "policy": "p10",
+        "event": "KXBTC-26NOV0817",
+        "horizon": "day",
+        "entry_mode": "taker",
+        "cost": 4.1458,
+        "fees": 0.1858,
+        "proceeds": 0.0,
+        "mark": 3.6572,
+        "net_pnl": -0.4886,
+        "closed": false,
+        "closed_at": null,
+        "hold_hours": null,
+        "early_exit": false,
+        "settlement_fallback": false,
+        "late_exit": false,
+        "unreachable": false,
+        "valuation_incomplete": false,
+        "history_incomplete": false,
+        "target_recovered_tranches": 0,
+        "tranches": 1,
+        "nonsettlement_sold": 0
+      },
+      {
+        "source_id": "T00021",
+        "policy": "p15",
+        "event": "KXBTC-26NOV0817",
+        "horizon": "day",
+        "entry_mode": "taker",
+        "cost": 4.1458,
+        "fees": 0.1858,
+        "proceeds": 0.0,
+        "mark": 3.6572,
+        "net_pnl": -0.4886,
+        "closed": false,
+        "closed_at": null,
+        "hold_hours": null,
+        "early_exit": false,
+        "settlement_fallback": false,
+        "late_exit": false,
+        "unreachable": false,
+        "valuation_incomplete": false,
+        "history_incomplete": false,
+        "target_recovered_tranches": 0,
+        "tranches": 1,
+        "nonsettlement_sold": 0
+      },
+      {
+        "source_id": "T00021",
+        "policy": "p25",
+        "event": "KXBTC-26NOV0817",
+        "horizon": "day",
+        "entry_mode": "taker",
+        "cost": 4.1458,
+        "fees": 0.1858,
+        "proceeds": 0.0,
+        "mark": 3.6572,
+        "net_pnl": -0.4886,
+        "closed": false,
+        "closed_at": null,
+        "hold_hours": null,
+        "early_exit": false,
+        "settlement_fallback": false,
+        "late_exit": false,
+        "unreachable": false,
+        "valuation_incomplete": false,
+        "history_incomplete": false,
+        "target_recovered_tranches": 0,
+        "tranches": 1,
+        "nonsettlement_sold": 0
+      },
+      {
+        "source_id": "T00021",
+        "policy": "scale",
+        "event": "KXBTC-26NOV0817",
+        "horizon": "day",
+        "entry_mode": "taker",
+        "cost": 4.1458,
+        "fees": 0.1858,
+        "proceeds": 0.0,
+        "mark": 3.6572,
+        "net_pnl": -0.4886,
+        "closed": false,
+        "closed_at": null,
+        "hold_hours": null,
+        "early_exit": false,
+        "settlement_fallback": false,
+        "late_exit": false,
+        "unreachable": false,
+        "valuation_incomplete": false,
+        "history_incomplete": false,
+        "target_recovered_tranches": 0,
+        "tranches": 2,
+        "nonsettlement_sold": 0
       }
     ],
     "matched_complete_ids": [
@@ -5049,7 +5682,7 @@
             {
               "policy": "p05",
               "label": "+5%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5075,9 +5708,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5094,7 +5727,7 @@
             {
               "policy": "p10",
               "label": "+10%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5120,9 +5753,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5139,7 +5772,7 @@
             {
               "policy": "p15",
               "label": "+15%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5165,9 +5798,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5184,7 +5817,7 @@
             {
               "policy": "p25",
               "label": "+25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5210,9 +5843,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5229,7 +5862,7 @@
             {
               "policy": "scale",
               "label": "Half +10% / half +25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5255,9 +5888,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4471,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9357,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939842477501415,
               "expected_shortfall_05": null,
@@ -5496,7 +6129,7 @@
             {
               "policy": "p05",
               "label": "+5%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5522,9 +6155,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5541,7 +6174,7 @@
             {
               "policy": "p10",
               "label": "+10%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5567,9 +6200,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5586,7 +6219,7 @@
             {
               "policy": "p15",
               "label": "+15%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5612,9 +6245,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5631,7 +6264,7 @@
             {
               "policy": "p25",
               "label": "+25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5657,9 +6290,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5676,7 +6309,7 @@
             {
               "policy": "scale",
               "label": "Half +10% / half +25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5702,9 +6335,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4471,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9357,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939842477501415,
               "expected_shortfall_05": null,
@@ -5727,7 +6360,7 @@
             {
               "policy": "p05",
               "label": "+5%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5753,9 +6386,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5772,7 +6405,7 @@
             {
               "policy": "p10",
               "label": "+10%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5798,9 +6431,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5817,7 +6450,7 @@
             {
               "policy": "p15",
               "label": "+15%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5843,9 +6476,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5862,7 +6495,7 @@
             {
               "policy": "p25",
               "label": "+25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5888,9 +6521,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -5907,7 +6540,7 @@
             {
               "policy": "scale",
               "label": "Half +10% / half +25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -5933,9 +6566,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4471,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9357,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939842477501415,
               "expected_shortfall_05": null,
@@ -6174,7 +6807,7 @@
             {
               "policy": "p05",
               "label": "+5%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -6200,9 +6833,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -6219,7 +6852,7 @@
             {
               "policy": "p10",
               "label": "+10%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -6245,9 +6878,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -6264,7 +6897,7 @@
             {
               "policy": "p15",
               "label": "+15%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -6290,9 +6923,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -6309,7 +6942,7 @@
             {
               "policy": "p25",
               "label": "+25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -6335,9 +6968,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4469,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9355,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939669660717448,
               "expected_shortfall_05": null,
@@ -6354,7 +6987,7 @@
             {
               "policy": "scale",
               "label": "Half +10% / half +25%",
-              "assigned": 1,
+              "assigned": 2,
               "closed": 1,
               "matched_closed": 1,
               "event_blocks": 1,
@@ -6380,9 +7013,9 @@
               "settlement_fallbacks": 0,
               "late_exits": 1,
               "unreachable": 0,
-              "unresolved": 0,
-              "matched_marked": 1,
-              "marked_net_pnl": -18.4471,
+              "unresolved": 1,
+              "matched_marked": 2,
+              "marked_net_pnl": -18.9357,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.15939842477501415,
               "expected_shortfall_05": null,
