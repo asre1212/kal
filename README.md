@@ -94,3 +94,7 @@ Statistical references checked for the profit-target experiment (November 2026):
 - Efron (1979), *Bootstrap Methods: Another Look at the Jackknife*: https://www.math.ntu.edu.tw/~hchen/teaching/LargeSample/references/Efron79.pdf
 - Holm (1979), *A Simple Sequentially Rejective Multiple Test Procedure*: https://www.ime.usp.br/~abe/lista/pdf4R8xPVzCnX.pdf
 - NIST, Wilson proportion confidence intervals: https://www.itl.nist.gov/div898/handbook/prc/section2/prc241.htm
+
+## November 13 allocation revision
+
+Owner-directed hypothetical allocation: 50% same-day, 25% about-one-month, 25% 6–12-month, applied to $90,000 investable capital ($45,000 / $22,500 / $22,500); the $10,000 reserve is unchanged. Maker/taker each receive half their horizon allocation. The collector applies one idempotent, audited transfer of unreserved cash; no past fills, historical snapshots or original starting balances are rewritten. Net transfers are excluded from P&L, and dashboard percentages remain against original capital, not a time-weighted return. All trade/exposure caps and cadence remain unchanged; this does not force additional entries. See the prospective review and sparse-sample limitations.

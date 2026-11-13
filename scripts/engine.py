@@ -30,6 +30,31 @@ def initial_state(now,config):
     buckets={f'{h}_{mode}':{'horizon':h,'mode':mode,'initial':config['bucket_capital'],'cash':config['bucket_capital']} for h in config['horizons'] for mode in ['maker','taker']}
     return {'schema':1,'started_at':iso(now),'trial_end':iso(end),'updated_at':iso(now),'buckets':buckets,'trades':[],'equity_history':[{'at':iso(now),'equity':config['initial_capital'],'cash':config['initial_capital'],'fees':0,'drawdown':0,'buckets':{k:config['bucket_capital'] for k in buckets}}], 'runs':0,'reviews':[],'changes':[], 'health':{}, 'candidates':[]}
 
+def apply_allocation(state,config,now):
+    """Idempotent, cash-only prospective transfer; never rewrite returns or fills."""
+    allocation=config.get('allocation')
+    if not allocation or state.get('allocation_id')==allocation['id']: return False
+    weights=allocation['horizon_weights']
+    if set(weights)!=set(config['horizons']) or any(w<0 for w in weights.values()) or abs(sum(weights.values())-1)>1e-9:
+        raise ValueError('Invalid allocation weights')
+    capital=config['initial_capital']-config['reserve']
+    transfers={}
+    for key,b in state['buckets'].items():
+        target=money(capital*weights[b['horizon']]/2)
+        current=money(b['initial']+b.get('net_transfers',0))
+        delta=money(target-current)
+        reserved=sum(t.get('reserved',0) for t in state['trades'] if t['bucket']==key and t['status'] not in ['closed','cancelled'])
+        if b['cash']+delta<reserved-1e-8: raise ValueError('Allocation blocked: insufficient unreserved cash in '+key)
+        transfers[key]=delta
+    if abs(sum(transfers.values()))>1e-8: raise ValueError('Allocation must conserve total capital')
+    for key,delta in transfers.items():
+        b=state['buckets'][key];b['cash']=money(b['cash']+delta)
+        b['net_transfers']=money(b.get('net_transfers',0)+delta)
+        b['allocated_capital']=money(b['initial']+b['net_transfers'])
+    state['allocation_id']=allocation['id']
+    state.setdefault('changes',[]).append({'at':iso(now),'type':'capital_allocation','allocation_id':allocation['id'],'version':config['version'],'transfers':transfers,'horizon_weights':weights,'reserve':config['reserve'],'note':'Owner-directed prospective cash transfer only. Historical snapshots, fills, original capital and all risk caps retained.'})
+    return True
+
 def ledger_fill(state,trade,leg,action,p,q,mode,at,reason):
     if q<=0: return
     f=0 if mode=='settlement' else fee(p,q,mode,leg.get('fee_multiplier',1),leg.get('maker_enabled',False))
@@ -96,7 +121,7 @@ def summarize(state,config,books,now):
         ci=None
         if n:
             z=1.96;p=wins/n;den=1+z*z/n;mid=(p+z*z/(2*n))/den;rad=z*math.sqrt(p*(1-p)/n+z*z/(4*n*n))/den;ci=[mid-rad,mid+rad]
-        stats.append({'id':key,**b,'equity':eq,'net_pnl':money(eq-b['initial']),'realized':money(sum(t['pnl'] for t in closed)),'fees':money(fs),'closed':n,'wins':wins,'win_rate':wins/n if n else None,'win_ci':ci,'expectancy':money(sum(t['pnl'] for t in closed)/n) if n else None,'open':sum(t['status'] in ['open','closing','entering'] for t in trades),'submitted':len(trades),'entered':sum(t['cost']>0 for t in trades),'avg_hold':sum(t.get('hold_hours',0) for t in closed)/n if n else None})
+        stats.append({'id':key,**b,'equity':eq,'net_pnl':money(eq-b['initial']-b.get('net_transfers',0)),'realized':money(sum(t['pnl'] for t in closed)),'fees':money(fs),'closed':n,'wins':wins,'win_rate':wins/n if n else None,'win_ci':ci,'expectancy':money(sum(t['pnl'] for t in closed)/n) if n else None,'open':sum(t['status'] in ['open','closing','entering'] for t in trades),'submitted':len(trades),'entered':sum(t['cost']>0 for t in trades),'avg_hold':sum(t.get('hold_hours',0) for t in closed)/n if n else None})
     incomplete=any(t.get('unpriced') or t.get('depth_shortfall') for t in state['trades'] if t['status'] not in ['closed','cancelled'])
     peak=max([config['initial_capital'],total]+[x['equity'] for x in state['equity_history'] if not x.get('valuation_incomplete')]);dd=(peak-total)/peak if not incomplete else None
     point={'at':iso(now),'equity':money(total),'cash':money(cash),'fees':money(fees),'drawdown':dd,'valuation_incomplete':incomplete,'buckets':{b['id']:b['equity'] for b in stats}}

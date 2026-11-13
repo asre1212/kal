@@ -114,5 +114,25 @@
         "https://docs.kalshi.com/api-reference/market/get-market-orderbook"
       ]
     }
+  },
+  {
+    "at": "2026-11-13T19:23:36Z",
+    "type": "OWNER-DIRECTED ALLOCATION",
+    "title": "Prospective 50% same-day / 25% monthly / 25% long-horizon",
+    "summary": "Reassign the $90,000 experiment allocation: $45,000 same day and $22,500 each for about-one-month and 6\u201312-month horizons. Preserve the $10,000 reserve; split each horizon equally between maker and taker. This is hypothetical, not a conclusion that same-day has a proven edge. Transfers apply once at the next actual collector run, not at this review timestamp.",
+    "decisions": [
+      "Preserve original bucket initial capital, historical equity points, fills, positions and prior versions. Transfer only unreserved cash; abort atomically if unavailable. Cash transfers are excluded from P&L.",
+      "Keep $2,000 trade, $6,000 sleeve exposure, $4,000 event exposure and 7.5% drawdown limits, execution assumptions, eight-hour cadence and trial end unchanged. More assigned cash does not force more trades or overcome thin liquidity.",
+      "At 2026-11-13T17:06:31Z same-day net was +$40.91, monthly -$52.46, long -$0.25. Samples are sparse and correlated: fewer than 20 event blocks per strategy/version, no supported confidence intervals or causal horizon comparison.",
+      "Retain data-gap, missed-exit, conservative depth, queue-priority uncertainty, fees and event/covariance/tail-risk caveats. Eight-hour checks cannot enforce a two-hour holding target; do not mistake more capital for better execution.",
+      "Dashboard retains returns relative to original capital for historical continuity and labels allocation separately. Separate profit-target counterfactual study is unchanged."
+    ],
+    "sources": [
+      "https://docs.kalshi.com/api-reference/market/get-trades",
+      "https://docs.kalshi.com/api-reference/market/get-market-orderbook",
+      "https://docs.kalshi.com/getting_started/fee_rounding",
+      "https://github.com/asre1212/kal/tree/main/data/observations"
+    ],
+    "source_assessment": "Official print/orderbook APIs support observed execution evidence, not guaranteed liquidity or queue priority. Fee rounding is a modeled cost limitation, not permission to alter existing fills. No pricing, fill or fee rules changed."
   }
 ]

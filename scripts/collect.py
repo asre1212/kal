@@ -218,6 +218,7 @@ def run():
     ERRORS.clear()
     now=time.time(); cfg=json.loads((ROOT/'data/config.json').read_text());path=ROOT/'data/state.json'
     state=json.loads(path.read_text()) if path.exists() else initial_state(now,cfg)
+    apply_allocation(state,cfg,now)
     state['config']=cfg
     init_profit_study(state,cfg,now)
     universe=[]

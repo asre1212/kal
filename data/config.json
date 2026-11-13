@@ -1,5 +1,5 @@
 {
-  "version": "limit-replay-v3-8h",
+  "version": "limit-replay-v4-allocation-50-25-25",
   "initial_capital": 100000,
   "reserve": 10000,
   "bucket_capital": 15000,
@@ -99,5 +99,14 @@
   },
   "cadence_version": "cadence-8h-v1",
   "cadence_changed_at": "2026-11-08T16:07:23.311192Z",
-  "cadence_review_completed_at": "2026-11-08T16:07:23.311192Z"
+  "cadence_review_completed_at": "2026-11-08T16:07:23.311192Z",
+  "allocation": {
+    "id": "2026-11-13-50-25-25",
+    "horizon_weights": {
+      "day": 0.5,
+      "month": 0.25,
+      "long": 0.25
+    },
+    "basis": "initial capital less unchanged reserve; equal maker/taker split"
+  }
 }
