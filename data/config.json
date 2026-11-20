@@ -1,5 +1,5 @@
 {
-  "version": "limit-replay-v4-allocation-50-25-25",
+  "version": "limit-replay-v5-pause-intraday",
   "initial_capital": 100000,
   "reserve": 10000,
   "bucket_capital": 15000,
@@ -46,8 +46,11 @@
     "KXCPI",
     "KXFED"
   ],
-  "paused_buckets": [],
-  "notes": "Initial 30-day forward test. Each horizon has $15k passive and $15k immediate-execution sleeves; $10k reserve. $100k total, never $100k per sleeve. Limits apply to combined gross debit plus fees.",
+  "paused_buckets": [
+    "day_maker",
+    "day_taker"
+  ],
+  "notes": "Initial 30-day forward test; $100,000 TOTAL including $10,000 reserve. Owner allocation: day $45k, month $22.5k, long $22.5k, equally split by entry mode. Same-day new entries paused November 20 for exit-timing failures; earmarked cash stays idle. Combined trade outlay including modeled fees remains capped at $2,000.",
   "execution_model": "touch-volume-v2",
   "cadence_started_at": "2026-11-06T16:00:48.499468Z",
   "cadence_review_due_at": "2026-11-08T16:00:48.499468Z",
@@ -108,5 +111,6 @@
       "long": 0.25
     },
     "basis": "initial capital less unchanged reserve; equal maker/taker split"
-  }
+  },
+  "strategy_changed_at": "2026-11-20T20:45:21Z"
 }

@@ -12,7 +12,7 @@ A forward experiment with **$100,000 hypothetical capital** and **$2,000 maximum
 | About one month | 21–45 days to deadline | 72 hours |
 | 6–12 months | 180–366 days to deadline | 7 days |
 
-Each horizon has a $15,000 resting-limit sleeve and $15,000 immediate-execution sleeve, plus a shared $10,000 reserve: $100,000 total. The selected opportunities are the same for both execution modes; realized holdings differ because limits may not fill. Unused capital remains cash. Contract maturity is distinct from our planned holding period. Asset categories and strategy types vary with availability, so this is an exploratory comparison, not a causal test of maturity alone.
+Originally each horizon had two $15,000 sleeves. Since November 13, owner-directed allocations are $45,000 same-day, $22,500 monthly and $22,500 long-horizon, split equally between execution modes, plus the unchanged $10,000 reserve: $100,000 total. Same-day new entries are paused from November 20; this allocation stays earmarked and is not reassigned. The selected opportunities are the same for both execution modes; realized holdings differ because limits may not fill. Unused capital remains cash. Contract maturity is distinct from our planned holding period. Asset categories and strategy types vary with availability, so this is an exploratory comparison, not a causal test of maturity alone.
 
 ## Strategy and execution
 
@@ -98,3 +98,11 @@ Statistical references checked for the profit-target experiment (November 2026):
 ## November 13 allocation revision
 
 Owner-directed hypothetical allocation: 50% same-day, 25% about-one-month, 25% 6–12-month, applied to $90,000 investable capital ($45,000 / $22,500 / $22,500); the $10,000 reserve is unchanged. Maker/taker each receive half their horizon allocation. The collector applies one idempotent, audited transfer of unreserved cash; no past fills, historical snapshots or original starting balances are rewritten. Net transfers are excluded from P&L, and dashboard percentages remain against original capital, not a time-weighted return. All trade/exposure caps and cadence remain unchanged; this does not force additional entries. See the prospective review and sparse-sample limitations.
+
+## November 20 biweekly review
+
+[Full review and tables](https://asre1212.github.io/kal/reviews/2026-11-20.html). Version `limit-replay-v5-pause-intraday` pauses only new `day_maker` and `day_taker` entries because snapshot timing cannot enforce their two-hour exits. Existing orders and positions retain their versions and continue through the existing exit engine. Monthly and long-horizon entries continue within unchanged limits. The 8-hour cron, $100k total, $2k combined cap, owner allocation and `profit-targets-v1` hypotheses remain unchanged. This is an operational decision, not selection based on short-run profits.
+
+The original entry trial ends **December 6, 2026 at 10:29 AM Eastern**. Entries stop automatically then; existing exits continue. The December 4 biweekly review must explicitly decide whether to register a new phase or retain exit-only monitoring. No capital/history reset or automatic extension. Biweekly reviews remain separate from collection cadence.
+
+`python scripts/audit_review.py` reproduces accounting, source-print and diagnostic checks on the current ledger. The frozen November 20 audit is `docs/reviews/2026-11-20.json`, with source commit and captured Actions evidence in `data/research/2026-11-20-actions.json`. To reproduce that dated snapshot, use its source commit’s data with this audit script. No market requests or orders are made by the audit.
