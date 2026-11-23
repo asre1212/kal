@@ -2,7 +2,7 @@
   "schema": 1,
   "started_at": "2026-11-06T15:29:05.429626Z",
   "trial_end": "2026-12-06T15:29:05.429626Z",
-  "updated_at": "2026-11-22T22:22:55.168258Z",
+  "updated_at": "2026-11-23T08:52:15.290970Z",
   "buckets": {
     "day_maker": {
       "horizon": "day",
@@ -14846,7 +14846,7 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.35,
-            "after": "2026-11-22T22:22:53.943009Z",
+            "after": "2026-11-23T08:52:14.465423Z",
             "participation": 0.05,
             "credit": 0
           },
@@ -14870,7 +14870,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.51,
-            "after": "2026-11-22T22:22:53.943009Z",
+            "after": "2026-11-23T08:52:14.465423Z",
             "participation": 0.05,
             "credit": 0.0985
           }
@@ -14898,7 +14898,7 @@
       "entry_deadline": "2026-11-23T17:02:12.381460Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
-      "replay_after": "2026-11-22T22:22:53.943009Z",
+      "replay_after": "2026-11-23T08:52:14.465423Z",
       "execution_model": "touch-volume-v2",
       "unpriced": false,
       "depth_shortfall": false,
@@ -15734,9 +15734,25 @@
         "long_maker": 11249.9642,
         "long_taker": 11248.8769
       }
+    },
+    {
+      "at": "2026-11-23T08:52:15.290970Z",
+      "equity": 99935.3473,
+      "cash": 99930.7802,
+      "fees": 135.5598,
+      "drawdown": 0.0008329186215298154,
+      "valuation_incomplete": false,
+      "buckets": {
+        "day_maker": 22520.6977,
+        "day_taker": 22577.8887,
+        "month_maker": 11193.9501,
+        "month_taker": 11143.9697,
+        "long_maker": 11249.9642,
+        "long_taker": 11248.8769
+      }
     }
   ],
-  "runs": 51,
+  "runs": 52,
   "reviews": [
     {
       "at": "2026-11-06T16:00:48.499468Z",
@@ -16503,24 +16519,44 @@
   ],
   "health": {
     "backfill": {
-      "at": "2026-11-22T22:22:53.943009Z",
-      "interval_hours": 5.344878208173646,
+      "at": "2026-11-23T08:52:14.465423Z",
+      "interval_hours": 10.48869365685516,
       "attempted_trades": 1,
       "complete_trades": 1,
       "failed_trades": 0,
-      "backfilled_fills": 1,
+      "backfilled_fills": 0,
       "late_exit_trades": [],
       "max_exit_lag_hours": 0
     },
     "errors": [],
-    "data_gap": false,
-    "market_count": 1101,
-    "book_count": 2,
+    "data_gap": true,
+    "market_count": 1125,
+    "book_count": 4,
     "requested_interval_minutes": 480,
     "status": "ok",
     "note": "8-hour snapshot collection with chronological resting-limit replay. Market stops/time exits require observed books; GitHub schedules may be delayed."
   },
   "candidates": [
+    {
+      "horizon": "day",
+      "strategy": "Threshold strangle",
+      "event": "KXBTCD-26NOV2317",
+      "cost_per_pair": 0.48,
+      "legs": [
+        {
+          "ticker": "KXBTCD-26NOV2317-T60749.99",
+          "side": "no",
+          "title": "Bitcoin price on Nov 23, 2026?",
+          "ask": 0.31
+        },
+        {
+          "ticker": "KXBTCD-26NOV2317-T62999.99",
+          "side": "yes",
+          "title": "Bitcoin price on Nov 23, 2026?",
+          "ask": 0.17
+        }
+      ]
+    },
     {
       "horizon": "long",
       "strategy": "Outside timing window",
@@ -17059,12 +17095,12 @@
     ]
   },
   "backfill": {
-    "at": "2026-11-22T22:22:53.943009Z",
-    "interval_hours": 5.344878208173646,
+    "at": "2026-11-23T08:52:14.465423Z",
+    "interval_hours": 10.48869365685516,
     "attempted_trades": 1,
     "complete_trades": 1,
     "failed_trades": 0,
-    "backfilled_fills": 1,
+    "backfilled_fills": 0,
     "late_exit_trades": [],
     "max_exit_lag_hours": 0
   },
@@ -17659,6 +17695,16 @@
       "complete_trades": 1,
       "failed_trades": 0,
       "backfilled_fills": 1,
+      "late_exit_trades": [],
+      "max_exit_lag_hours": 0
+    },
+    {
+      "at": "2026-11-23T08:52:14.465423Z",
+      "interval_hours": 10.48869365685516,
+      "attempted_trades": 1,
+      "complete_trades": 1,
+      "failed_trades": 0,
+      "backfilled_fills": 0,
       "late_exit_trades": [],
       "max_exit_lag_hours": 0
     }
@@ -43674,7 +43720,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-22T22:22:53.943009Z",
+                "replay_after": "2026-11-23T08:52:14.465423Z",
                 "exit_target_ratio": 0.05,
                 "fills": [],
                 "legs": [
@@ -43691,7 +43737,7 @@
                       "action": "sell",
                       "side": "yes",
                       "limit": 0.99,
-                      "after": "2026-11-22T22:22:53.943009Z",
+                      "after": "2026-11-23T08:52:14.465423Z",
                       "activated_at": "2026-11-21T08:11:02.891462Z",
                       "participation": 0.05,
                       "filled": 0,
@@ -43714,7 +43760,7 @@
                       "action": "sell",
                       "side": "no",
                       "limit": 0.99,
-                      "after": "2026-11-22T22:22:53.943009Z",
+                      "after": "2026-11-23T08:52:14.465423Z",
                       "activated_at": "2026-11-21T08:11:02.891462Z",
                       "participation": 0.05,
                       "filled": 0,
@@ -43755,7 +43801,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-22T22:22:53.943009Z",
+                "replay_after": "2026-11-23T08:52:14.465423Z",
                 "exit_target_ratio": 0.1,
                 "fills": [],
                 "legs": [
@@ -43816,7 +43862,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-22T22:22:53.943009Z",
+                "replay_after": "2026-11-23T08:52:14.465423Z",
                 "exit_target_ratio": 0.15,
                 "fills": [],
                 "legs": [
@@ -43877,7 +43923,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-22T22:22:53.943009Z",
+                "replay_after": "2026-11-23T08:52:14.465423Z",
                 "exit_target_ratio": 0.25,
                 "fills": [],
                 "legs": [
@@ -43938,7 +43984,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-22T22:22:53.943009Z",
+                "replay_after": "2026-11-23T08:52:14.465423Z",
                 "exit_target_ratio": 0.1,
                 "fills": [],
                 "legs": [
@@ -43994,7 +44040,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-22T22:22:53.943009Z",
+                "replay_after": "2026-11-23T08:52:14.465423Z",
                 "exit_target_ratio": 0.25,
                 "fills": [],
                 "legs": [
@@ -44054,7 +44100,7 @@
       }
     ],
     "health": {
-      "at": "2026-11-22T22:22:53.943009Z",
+      "at": "2026-11-23T08:52:14.465423Z",
       "failed_histories": [],
       "blocked_slices": 0
     },
