@@ -2,7 +2,7 @@
   "schema": 1,
   "started_at": "2026-11-06T15:29:05.429626Z",
   "trial_end": "2026-12-06T15:29:05.429626Z",
-  "updated_at": "2026-11-25T01:19:47.496698Z",
+  "updated_at": "2026-11-25T19:06:35.602061Z",
   "buckets": {
     "day_maker": {
       "horizon": "day",
@@ -40,7 +40,7 @@
       "horizon": "long",
       "mode": "maker",
       "initial": 15000,
-      "cash": 11245.1642,
+      "cash": 11249.7894,
       "net_transfers": -3750.0,
       "allocated_capital": 11250.0
     },
@@ -14756,7 +14756,7 @@
           "close_time": "2027-07-01T14:00:00Z",
           "decision_time": "2027-07-01T14:00:00Z",
           "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Jul 1, 2027, then the market resolves to Yes.",
-          "mark": 1.7193,
+          "mark": 1.8175,
           "unpriced": false
         },
         {
@@ -14772,7 +14772,7 @@
           "close_time": "2027-10-01T14:00:00Z",
           "decision_time": "2027-10-01T14:00:00Z",
           "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Oct 1, 2027, then the market resolves to Yes.",
-          "mark": 2.213,
+          "mark": 2.3126,
           "unpriced": false
         }
       ],
@@ -14800,8 +14800,8 @@
           "reason": "Entry at observed ask; capped at 5% displayed top-level size"
         }
       ],
-      "pnl": -0.7365,
-      "mark": 3.9323,
+      "pnl": -0.5387,
+      "mark": 4.1301,
       "entry_deadline": "2026-11-22T08:11:02.891462Z",
       "target_ratio": 0.035469499657299515,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
@@ -14929,13 +14929,13 @@
       "version": "limit-replay-v5-pause-intraday",
       "created_at": "2026-11-24T10:48:04.730688Z",
       "opened_at": "2026-11-24T10:48:04.730688Z",
-      "status": "entering",
+      "status": "closed",
       "quantity": 10,
       "cost": 4.8,
-      "proceeds": 0,
-      "fees": 0.0,
+      "proceeds": 4.6252,
+      "fees": 0.1748,
       "cost_cap": 2000,
-      "reserved": 3.6,
+      "reserved": 0,
       "legs": [
         {
           "ticker": "KXIMPEACH-27-JUL01",
@@ -14954,9 +14954,9 @@
             "action": "buy",
             "side": "yes",
             "limit": 0.36,
-            "after": "2026-11-25T01:19:46.233276Z",
+            "after": "2026-11-25T19:06:34.828419Z",
             "participation": 0.05,
-            "credit": 0.5810000000000001
+            "credit": 0.6310000000000001
           }
         },
         {
@@ -14966,7 +14966,7 @@
           "side": "no",
           "limit": 0.48,
           "bought": 10,
-          "sold": 0,
+          "sold": 10,
           "fee_multiplier": 1.0,
           "maker_enabled": false,
           "close_time": "2027-10-01T14:00:00Z",
@@ -14976,7 +14976,7 @@
             "action": "buy",
             "side": "no",
             "limit": 0.48,
-            "after": "2026-11-25T01:19:46.233276Z",
+            "after": "2026-11-25T19:06:34.828419Z",
             "participation": 0.05,
             "credit": 0.0
           },
@@ -15119,18 +15119,105 @@
           "source_trade_id": "072a4cf3-9429-b149-bc9f-d90d83b00cad",
           "backfilled": true,
           "execution_model": "touch-volume-v2"
+        },
+        {
+          "at": "2026-11-25T19:06:34.828419Z",
+          "ticker": "KXIMPEACH-27-OCT01",
+          "side": "no",
+          "action": "sell",
+          "price": 0.48,
+          "quantity": 10,
+          "fee": 0.1748,
+          "mode": "taker",
+          "reason": "Unpaired/partial entry timeout; next observed book"
         }
       ],
-      "pnl": -0.3739,
-      "mark": 4.4261,
+      "pnl": -0.1748,
+      "mark": 0,
       "entry_deadline": "2026-11-25T10:48:04.730688Z",
       "target_ratio": 0.25,
       "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
-      "replay_after": "2026-11-25T01:19:46.233276Z",
+      "replay_after": "2026-11-25T19:06:34.828419Z",
       "execution_model": "touch-volume-v2",
       "unpriced": false,
       "depth_shortfall": false,
-      "backfill_status": "complete"
+      "backfill_status": "complete",
+      "time_exit_lag_hours": 8.308,
+      "exit_reason": "Unpaired/partial entry timeout; next observed book",
+      "closed_at": "2026-11-25T19:06:34.828419Z",
+      "hold_hours": 32.31
+    },
+    {
+      "id": "T00091",
+      "bucket": "long_maker",
+      "horizon": "long",
+      "mode": "maker",
+      "strategy": "Outside timing window",
+      "event": "KXIMPEACH",
+      "version": "limit-replay-v5-pause-intraday",
+      "created_at": "2026-11-25T19:06:35.602061Z",
+      "opened_at": "2026-11-25T19:06:35.602061Z",
+      "status": "entering",
+      "quantity": 3,
+      "cost": 0,
+      "proceeds": 0,
+      "fees": 0,
+      "cost_cap": 2000,
+      "reserved": 2.58,
+      "legs": [
+        {
+          "ticker": "KXIMPEACH-27-JUL01",
+          "title": "Will the President be impeached before Jul 1, 2027?",
+          "subtitle": "Before Jul 1, 2027",
+          "side": "yes",
+          "limit": 0.38,
+          "bought": 0,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2027-07-01T14:00:00Z",
+          "decision_time": "2027-07-01T14:00:00Z",
+          "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Jul 1, 2027, then the market resolves to Yes.",
+          "buy_order": {
+            "action": "buy",
+            "side": "yes",
+            "limit": 0.38,
+            "after": "2026-11-25T19:06:35.602061Z",
+            "participation": 0.05
+          }
+        },
+        {
+          "ticker": "KXIMPEACH-27-OCT01",
+          "title": "Will the President be impeached before Oct 1, 2027?",
+          "subtitle": "Before Oct 1, 2027",
+          "side": "no",
+          "limit": 0.48,
+          "bought": 0,
+          "sold": 0,
+          "fee_multiplier": 1.0,
+          "maker_enabled": false,
+          "close_time": "2027-10-01T14:00:00Z",
+          "decision_time": "2027-10-01T14:00:00Z",
+          "rules": "If the U.S. House of Representatives has passed a bill impeaching the President of the United States after Issuance and before Oct 1, 2027, then the market resolves to Yes.",
+          "buy_order": {
+            "action": "buy",
+            "side": "no",
+            "limit": 0.48,
+            "after": "2026-11-25T19:06:35.602061Z",
+            "participation": 0.05
+          }
+        }
+      ],
+      "fills": [],
+      "pnl": 0.0,
+      "mark": 0.0,
+      "entry_deadline": "2026-11-26T19:06:35.602061Z",
+      "target_ratio": 0.25,
+      "reason": "Equal-count tails; prices and spreads passed fixed baseline filters. Research trade, no forecast edge asserted.",
+      "replay_after": "2026-11-25T19:06:35.602061Z",
+      "execution_model": "touch-volume-v2",
+      "unpriced": false,
+      "depth_shortfall": false
     }
   ],
   "equity_history": [
@@ -16026,9 +16113,25 @@
         "long_maker": 11249.5903,
         "long_taker": 11248.5761
       }
+    },
+    {
+      "at": "2026-11-25T19:06:35.602061Z",
+      "equity": 99935.0695,
+      "cash": 99930.9394,
+      "fees": 135.7506,
+      "drawdown": 0.0008356961033990127,
+      "valuation_incomplete": false,
+      "buckets": {
+        "day_maker": 22520.6977,
+        "day_taker": 22577.8887,
+        "month_maker": 11193.9501,
+        "month_taker": 11143.9697,
+        "long_maker": 11249.7894,
+        "long_taker": 11248.7739
+      }
     }
   ],
-  "runs": 55,
+  "runs": 56,
   "reviews": [
     {
       "at": "2026-11-06T16:00:48.499468Z",
@@ -16795,54 +16898,96 @@
   ],
   "health": {
     "backfill": {
-      "at": "2026-11-25T01:19:46.233276Z",
-      "interval_hours": 14.528195163342687,
+      "at": "2026-11-25T19:06:34.828419Z",
+      "interval_hours": 17.779814366896947,
       "attempted_trades": 1,
       "complete_trades": 1,
       "failed_trades": 0,
-      "backfilled_fills": 9,
-      "late_exit_trades": [],
-      "max_exit_lag_hours": 0
+      "backfilled_fills": 0,
+      "late_exit_trades": [
+        "T00090"
+      ],
+      "max_exit_lag_hours": 8.308360480732388
     },
     "errors": [],
     "data_gap": true,
-    "market_count": 1091,
-    "book_count": 2,
+    "market_count": 1121,
+    "book_count": 6,
     "requested_interval_minutes": 480,
     "status": "ok",
     "note": "8-hour snapshot collection with chronological resting-limit replay. Market stops/time exits require observed books; GitHub schedules may be delayed."
   },
   "candidates": [
     {
+      "horizon": "day",
+      "strategy": "Threshold strangle",
+      "event": "KXBTCD-26NOV2517",
+      "cost_per_pair": 0.44,
+      "legs": [
+        {
+          "ticker": "KXBTCD-26NOV2517-T59749.99",
+          "side": "no",
+          "title": "Bitcoin price on Nov 25, 2026?",
+          "ask": 0.36
+        },
+        {
+          "ticker": "KXBTCD-26NOV2517-T60749.99",
+          "side": "yes",
+          "title": "Bitcoin price on Nov 25, 2026?",
+          "ask": 0.08
+        }
+      ]
+    },
+    {
+      "horizon": "day",
+      "strategy": "Threshold strangle",
+      "event": "KXNATGASD-26NOV2517",
+      "cost_per_pair": 0.4,
+      "legs": [
+        {
+          "ticker": "KXNATGASD-26NOV2517-T3.600",
+          "side": "no",
+          "title": "Will the natural gas close price be above 3.600 USD/MMBtu on November 25, 2026 at 5:00 PM EST?",
+          "ask": 0.06
+        },
+        {
+          "ticker": "KXNATGASD-26NOV2517-T3.685",
+          "side": "yes",
+          "title": "Will the natural gas close price be above 3.685 USD/MMBtu on November 25, 2026 at 5:00 PM EST?",
+          "ask": 0.34
+        }
+      ]
+    },
+    {
       "horizon": "long",
       "strategy": "Outside timing window",
       "event": "KXIMPEACH",
-      "cost_per_pair": 0.86,
+      "cost_per_pair": 0.89,
       "legs": [
         {
           "ticker": "KXIMPEACH-27-JUL01",
           "side": "yes",
           "title": "Will the President be impeached before Jul 1, 2027?",
-          "ask": 0.37
+          "ask": 0.39
         },
         {
           "ticker": "KXIMPEACH-27-OCT01",
           "side": "no",
           "title": "Will the President be impeached before Oct 1, 2027?",
-          "ask": 0.49
+          "ask": 0.5
         }
       ]
     }
   ],
   "summary": {
-    "equity": 99934.6726,
-    "cash": 99926.3142,
-    "net_pnl": -65.3274,
-    "fees": 135.5758,
-    "drawdown": 0.0008396643631319889,
+    "equity": 99935.0695,
+    "cash": 99930.9394,
+    "net_pnl": -64.9305,
+    "fees": 135.7506,
+    "drawdown": 0.0008356961033990127,
     "valuation_incomplete": false,
     "max_drawdown": 0.0030851224796567623,
-    "closed": 83,
+    "closed": 84,
     "open": 2,
     "buckets": [
       {
@@ -16950,25 +17095,25 @@
         "horizon": "long",
         "mode": "maker",
         "initial": 15000,
-        "cash": 11245.1642,
+        "cash": 11249.7894,
         "net_transfers": -3750.0,
         "allocated_capital": 11250.0,
-        "equity": 11249.5903,
-        "net_pnl": -0.4097,
-        "realized": -0.0358,
-        "fees": 0.2358,
-        "closed": 4,
+        "equity": 11249.7894,
+        "net_pnl": -0.2106,
+        "realized": -0.2106,
+        "fees": 0.4106,
+        "closed": 5,
         "wins": 1,
-        "win_rate": 0.25,
+        "win_rate": 0.2,
         "win_ci": [
-          0.045586062644636216,
-          0.6993639475573634
+          0.03622316096978745,
+          0.6244717358814613
         ],
-        "expectancy": -0.009,
+        "expectancy": -0.0421,
         "open": 1,
-        "submitted": 5,
+        "submitted": 6,
         "entered": 5,
-        "avg_hold": 97.4475
+        "avg_hold": 84.42
       },
       {
         "id": "long_taker",
@@ -16978,8 +17123,8 @@
         "cash": 11244.6438,
         "net_transfers": -3750.0,
         "allocated_capital": 11250.0,
-        "equity": 11248.5761,
-        "net_pnl": -1.4239,
+        "equity": 11248.7739,
+        "net_pnl": -1.2261,
         "realized": -0.6874,
         "fees": 0.7062,
         "closed": 2,
@@ -17307,9 +17452,9 @@
       {
         "bucket": "long_maker",
         "version": "limit-replay-v5-pause-intraday",
-        "closed": 1,
+        "closed": 2,
         "event_blocks": 1,
-        "net_return_on_outlay": -0.04571428571428572,
+        "net_return_on_outlay": -0.037048543689320396,
         "return_ci": null,
         "profit_factor": 0.0,
         "worst_tail_mean": null,
@@ -17351,14 +17496,16 @@
     ]
   },
   "backfill": {
-    "at": "2026-11-25T01:19:46.233276Z",
-    "interval_hours": 14.528195163342687,
+    "at": "2026-11-25T19:06:34.828419Z",
+    "interval_hours": 17.779814366896947,
     "attempted_trades": 1,
     "complete_trades": 1,
     "failed_trades": 0,
-    "backfilled_fills": 9,
-    "late_exit_trades": [],
-    "max_exit_lag_hours": 0
+    "backfilled_fills": 0,
+    "late_exit_trades": [
+      "T00090"
+    ],
+    "max_exit_lag_hours": 8.308360480732388
   },
   "collection_history": [
     {
@@ -17995,6 +18142,18 @@
       "backfilled_fills": 9,
       "late_exit_trades": [],
       "max_exit_lag_hours": 0
+    },
+    {
+      "at": "2026-11-25T19:06:34.828419Z",
+      "interval_hours": 17.779814366896947,
+      "attempted_trades": 1,
+      "complete_trades": 1,
+      "failed_trades": 0,
+      "backfilled_fills": 0,
+      "late_exit_trades": [
+        "T00090"
+      ],
+      "max_exit_lag_hours": 8.308360480732388
     }
   ],
   "profit_study": {
@@ -44008,7 +44167,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-25T01:19:46.233276Z",
+                "replay_after": "2026-11-25T19:06:34.828419Z",
                 "exit_target_ratio": 0.05,
                 "fills": [],
                 "legs": [
@@ -44025,14 +44184,14 @@
                       "action": "sell",
                       "side": "yes",
                       "limit": 0.99,
-                      "after": "2026-11-25T01:19:46.233276Z",
+                      "after": "2026-11-25T19:06:34.828419Z",
                       "activated_at": "2026-11-21T08:11:02.891462Z",
                       "participation": 0.05,
                       "filled": 0,
                       "eligible_volume": 0,
                       "model": "touch-volume-v2"
                     },
-                    "mark": 1.7193,
+                    "mark": 1.8175,
                     "unpriced": false
                   },
                   {
@@ -44048,19 +44207,19 @@
                       "action": "sell",
                       "side": "no",
                       "limit": 0.99,
-                      "after": "2026-11-25T01:19:46.233276Z",
+                      "after": "2026-11-25T19:06:34.828419Z",
                       "activated_at": "2026-11-21T08:11:02.891462Z",
                       "participation": 0.05,
                       "filled": 0,
                       "eligible_volume": 0,
                       "model": "touch-volume-v2"
                     },
-                    "mark": 2.213,
+                    "mark": 2.3126,
                     "unpriced": false
                   }
                 ],
-                "mark": 3.9323,
-                "pnl": -0.7365,
+                "mark": 4.1301,
+                "pnl": -0.5387,
                 "reserved": 0,
                 "target_ratio": 0.05,
                 "target_profit": 0.2334,
@@ -44089,7 +44248,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-25T01:19:46.233276Z",
+                "replay_after": "2026-11-25T19:06:34.828419Z",
                 "exit_target_ratio": 0.1,
                 "fills": [],
                 "legs": [
@@ -44103,7 +44262,7 @@
                     "bought": 5,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 1.7193,
+                    "mark": 1.8175,
                     "unpriced": false
                   },
                   {
@@ -44116,12 +44275,12 @@
                     "bought": 5,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 2.213,
+                    "mark": 2.3126,
                     "unpriced": false
                   }
                 ],
-                "mark": 3.9323,
-                "pnl": -0.7365,
+                "mark": 4.1301,
+                "pnl": -0.5387,
                 "reserved": 0,
                 "target_ratio": 0.1,
                 "target_profit": 0.4669,
@@ -44150,7 +44309,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-25T01:19:46.233276Z",
+                "replay_after": "2026-11-25T19:06:34.828419Z",
                 "exit_target_ratio": 0.15,
                 "fills": [],
                 "legs": [
@@ -44164,7 +44323,7 @@
                     "bought": 5,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 1.7193,
+                    "mark": 1.8175,
                     "unpriced": false
                   },
                   {
@@ -44177,12 +44336,12 @@
                     "bought": 5,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 2.213,
+                    "mark": 2.3126,
                     "unpriced": false
                   }
                 ],
-                "mark": 3.9323,
-                "pnl": -0.7365,
+                "mark": 4.1301,
+                "pnl": -0.5387,
                 "reserved": 0,
                 "target_ratio": 0.15,
                 "target_profit": 0.7003,
@@ -44211,7 +44370,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-25T01:19:46.233276Z",
+                "replay_after": "2026-11-25T19:06:34.828419Z",
                 "exit_target_ratio": 0.25,
                 "fills": [],
                 "legs": [
@@ -44225,7 +44384,7 @@
                     "bought": 5,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 1.7193,
+                    "mark": 1.8175,
                     "unpriced": false
                   },
                   {
@@ -44238,12 +44397,12 @@
                     "bought": 5,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 2.213,
+                    "mark": 2.3126,
                     "unpriced": false
                   }
                 ],
-                "mark": 3.9323,
-                "pnl": -0.7365,
+                "mark": 4.1301,
+                "pnl": -0.5387,
                 "reserved": 0,
                 "target_ratio": 0.25,
                 "target_profit": 1.1672,
@@ -44272,7 +44431,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-25T01:19:46.233276Z",
+                "replay_after": "2026-11-25T19:06:34.828419Z",
                 "exit_target_ratio": 0.1,
                 "fills": [],
                 "legs": [
@@ -44286,7 +44445,7 @@
                     "bought": 2,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 0.6877,
+                    "mark": 0.727,
                     "unpriced": false
                   },
                   {
@@ -44299,12 +44458,12 @@
                     "bought": 2,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 0.8852,
+                    "mark": 0.925,
                     "unpriced": false
                   }
                 ],
-                "mark": 1.5729,
-                "pnl": -0.2946,
+                "mark": 1.652,
+                "pnl": -0.2155,
                 "reserved": 0,
                 "target_ratio": 0.1,
                 "target_profit": 0.1868,
@@ -44328,7 +44487,7 @@
                 "cost_cap": 2000,
                 "opened_at": "2026-11-21T08:11:02.891462Z",
                 "entry_completed_at": "2026-11-21T08:11:02.891462Z",
-                "replay_after": "2026-11-25T01:19:46.233276Z",
+                "replay_after": "2026-11-25T19:06:34.828419Z",
                 "exit_target_ratio": 0.25,
                 "fills": [],
                 "legs": [
@@ -44342,7 +44501,7 @@
                     "bought": 3,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 1.0316,
+                    "mark": 1.0905,
                     "unpriced": false
                   },
                   {
@@ -44355,12 +44514,12 @@
                     "bought": 3,
                     "sold": 0,
                     "target_unreachable": true,
-                    "mark": 1.3278,
+                    "mark": 1.3875,
                     "unpriced": false
                   }
                 ],
-                "mark": 2.3594,
-                "pnl": -0.4419,
+                "mark": 2.478,
+                "pnl": -0.3233,
                 "reserved": 0,
                 "target_ratio": 0.25,
                 "target_profit": 0.7003,
@@ -44388,7 +44547,7 @@
       }
     ],
     "health": {
-      "at": "2026-11-25T01:19:46.233276Z",
+      "at": "2026-11-25T19:06:34.828419Z",
       "failed_histories": [],
       "blocked_slices": 0
     },
@@ -48243,8 +48402,8 @@
         "cost": 4.6688,
         "fees": 0.1688,
         "proceeds": 0.0,
-        "mark": 3.9323,
-        "net_pnl": -0.7365,
+        "mark": 4.1301,
+        "net_pnl": -0.5387,
         "closed": false,
         "closed_at": null,
         "hold_hours": null,
@@ -48267,8 +48426,8 @@
         "cost": 4.6688,
         "fees": 0.1688,
         "proceeds": 0.0,
-        "mark": 3.9323,
-        "net_pnl": -0.7365,
+        "mark": 4.1301,
+        "net_pnl": -0.5387,
         "closed": false,
         "closed_at": null,
         "hold_hours": null,
@@ -48291,8 +48450,8 @@
         "cost": 4.6688,
         "fees": 0.1688,
         "proceeds": 0.0,
-        "mark": 3.9323,
-        "net_pnl": -0.7365,
+        "mark": 4.1301,
+        "net_pnl": -0.5387,
         "closed": false,
         "closed_at": null,
         "hold_hours": null,
@@ -48315,8 +48474,8 @@
         "cost": 4.6688,
         "fees": 0.1688,
         "proceeds": 0.0,
-        "mark": 3.9323,
-        "net_pnl": -0.7365,
+        "mark": 4.1301,
+        "net_pnl": -0.5387,
         "closed": false,
         "closed_at": null,
         "hold_hours": null,
@@ -48339,8 +48498,8 @@
         "cost": 4.6688,
         "fees": 0.1688,
         "proceeds": 0.0,
-        "mark": 3.9323,
-        "net_pnl": -0.7365,
+        "mark": 4.13,
+        "net_pnl": -0.5388,
         "closed": false,
         "closed_at": null,
         "hold_hours": null,
@@ -48428,7 +48587,7 @@
               "unreachable": 1,
               "unresolved": 1,
               "matched_marked": 33,
-              "marked_net_pnl": -52.9624,
+              "marked_net_pnl": -52.7646,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -48479,7 +48638,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 33,
-              "marked_net_pnl": -48.0578,
+              "marked_net_pnl": -47.86,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -48530,7 +48689,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 33,
-              "marked_net_pnl": -51.9931,
+              "marked_net_pnl": -51.7953,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -48581,7 +48740,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 33,
-              "marked_net_pnl": -45.9831,
+              "marked_net_pnl": -45.7853,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -48632,7 +48791,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 33,
-              "marked_net_pnl": -45.2695,
+              "marked_net_pnl": -45.0718,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -48920,7 +49079,7 @@
               "unreachable": 1,
               "unresolved": 1,
               "matched_marked": 30,
-              "marked_net_pnl": -41.034,
+              "marked_net_pnl": -40.8362,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -48971,7 +49130,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 30,
-              "marked_net_pnl": -39.7894,
+              "marked_net_pnl": -39.5916,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -49022,7 +49181,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 30,
-              "marked_net_pnl": -44.7047,
+              "marked_net_pnl": -44.5069,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -49073,7 +49232,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 30,
-              "marked_net_pnl": -42.6247,
+              "marked_net_pnl": -42.4269,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -49124,7 +49283,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 30,
-              "marked_net_pnl": -38.2011,
+              "marked_net_pnl": -38.0034,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -1.0,
               "expected_shortfall_05": -1.0,
@@ -50567,7 +50726,7 @@
               "unreachable": 1,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -50612,7 +50771,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -50657,7 +50816,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -50702,7 +50861,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -50747,7 +50906,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2695,
+              "marked_net_pnl": -1.0718,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.0798059502597811,
               "expected_shortfall_05": null,
@@ -51014,7 +51173,7 @@
               "unreachable": 1,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -51059,7 +51218,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -51104,7 +51263,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -51149,7 +51308,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2694,
+              "marked_net_pnl": -1.0716,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.07979097728599878,
               "expected_shortfall_05": null,
@@ -51194,7 +51353,7 @@
               "unreachable": 2,
               "unresolved": 1,
               "matched_marked": 2,
-              "marked_net_pnl": -1.2695,
+              "marked_net_pnl": -1.0718,
               "unpriced_or_incomplete_sources": 0,
               "worst_return": -0.0798059502597811,
               "expected_shortfall_05": null,
